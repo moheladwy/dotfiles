@@ -15,6 +15,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 plugins=(git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+eval "$(zoxide init zsh)"
+
 # In case a command is not found, try to find the package that has it
 function command_not_found_handler {
     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
@@ -77,4 +79,3 @@ pokemon-colorscripts --no-title -r 1,3,6
 # [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && 
 # source ~/.autojump/etc/profile.d/autojump.sh
 # autoload -U compinit && compinit -u
-
