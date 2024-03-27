@@ -3,7 +3,7 @@ This is My Linux Dotfiles.
 
 ## prequisites
 
-- you need to have `zsh or bash`, `git`, `zoxide`, and `stow`  installed on your system.
+- you need to have `zsh` or `bash`, `git`, `zoxide` if you use zsh, and `stow`  installed on your system.
 
 ## Installation
 
@@ -14,10 +14,14 @@ cd dotfiles
 
 ## Usage
 
+use the following command to install the dotfiles into your home directory. depending on your shell.
+
 ```zsh
 cd dotfiles/zsh
 stow . -t /home/$USER
 ```
+
+or
 
 ```bash
 cd dotfiles/bash
@@ -28,17 +32,17 @@ stow . -t /home/$USER
 
 ```zsh
 cd dotfiles
-mkdir <dotfile-dir>
-cd <dotfile-dir>
-touch <dotfile-name>
-stow . -t /home/$USER/<dotfile-dir>
+mkdir <dotfile-dir>                 # e.g. vim
+cd <dotfile-dir>                    # cd vim
+touch <dotfile-name>                # e.g. .vimrc
+stow . -t /home/$USER/<dotfile-dir> # stow . -t /home/$USER/vim
 ```
 
 ## How to remove dotfiles
 
 ```zsh
 cd dotfiles
-unstow <dotfile-dir>
+unstow <dotfile-dir>                # unstow vim
 ```
 
 ## License
