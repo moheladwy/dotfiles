@@ -1,0 +1,14 @@
+[General]
+clipboardGroup=PostScreenshotCopyImage
+useReleaseToCapture=true
+
+[GuiConfig]
+captureMode=0
+
+[ImageSave]
+imageCompressionQuality=100
+imageFilenameTemplate=Screenshot_<yyyy><MM><dd>_<hh><mm><ss>_<title>
+translatedScreenshotsFolder=Screenshots
+
+[VideoSave]
+translatedScreencastsFolder=Screencasts
