@@ -1,5 +1,9 @@
-# My-Linux-Dotfiles
-This is My Linux Dotfiles.
+# Dotfiles
+This is My Linux Dotfiles for `zsh` and `bash` shells, it contains the following configurations:
+
+- `zsh` and `bash` shell configurations.
+- `.ssh` configurations.
+- `.fonts.conf` configurations.
 
 ## prequisites
 
@@ -8,21 +12,21 @@ This is My Linux Dotfiles.
 ## Installation
 
 ```zsh
-git clone https://github.com/moheladwy/My-Linux-Dotfiles.git dotfiles
+git clone https://github.com/moheladwy/dotfiles.git dotfiles
 cd dotfiles
 ``` 
 
 ## Usage
 
-use the following command to install the dotfiles into your home directory. depending on your shell.
+use the following command to install the dotfiles into your home directory, depending on your shell.
 
+for `zsh`:
 ```zsh
 cd dotfiles/zsh
 stow . -t /home/$USER
 ```
 
-or
-
+for `bash`:
 ```bash
 cd dotfiles/bash
 stow . -t /home/$USER
@@ -32,9 +36,9 @@ stow . -t /home/$USER
 
 ```zsh
 cd dotfiles
-mkdir <dotfile-dir>                 # e.g. vim
+mkdir <dotfile-dir>                 # mkdir vim
 cd <dotfile-dir>                    # cd vim
-touch <dotfile-name>                # e.g. .vimrc
+touch <dotfile-name>                # touch .vimrc
 stow . -t /home/$USER/<dotfile-dir> # stow . -t /home/$USER/vim
 ```
 
@@ -49,6 +53,8 @@ unstow <dotfile-dir>                # unstow vim
 
 ```
 
-This is my personal dotfiles, you can use it as you want, but I'm not responsible for any damage caused by using it, so use it at your own risk.
+This is my personal dotfiles, you can use it as you want, 
+
+but I'm not responsible for any damage caused by using it, so use it at your own risk.
 
 ```
