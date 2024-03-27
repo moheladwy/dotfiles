@@ -1,0 +1,39 @@
+# Helpful aliases
+alias cls='clear' # clear terminal
+alias  l='eza -lh  --icons=auto' # long list
+alias ls='eza -1   --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+
+alias remove='$aurhelper -Rns' # uninstall package
+alias update='$aurhelper -Syu --noconfirm && flatpak update -y' # update system/package/aur and flatpak apps
+alias install='$aurhelper -S' # install new package
+alias search='$aurhelper -Ss' # list availabe package
+
+alias pl='$aurhelper -Qs' # list installed package
+alias pc='$aurhelper -Sc' # remove unused cache
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias code='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
+alias brave='brave --enable-chrome-browser-cloud-management'
+
+# flatpak aliases
+alias fl='flatpak list'
+alias fu='flatpak update -y'
+alias fi='flatpak install -y'
+alias frn='flatpak run'
+alias frm='flatpak uninstall'
+alias fs='flatpak search'
+
+# Handy change dir shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
+# Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
+alias ssh='kitten ssh'
+
