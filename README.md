@@ -41,14 +41,14 @@ cd dotfiles
 mkdir <dotfile-dir>                 # mkdir vim
 cd <dotfile-dir>                    # cd vim
 touch <dotfile-name>                # touch .vimrc
-stow . -t /home/$USER/<dotfile-dir> # stow . -t /home/$USER/vim
+stow . -t /home/$USER/<dotfile-dir> # stow . -t /home/$USER/vim or any dirctory you would like to stow ur file in it.
 ```
 
 ## How to remove dotfiles
 
 ```zsh
 cd dotfiles
-unstow <dotfile-dir>                # unstow vim
+stow -D <dotfile-dir>                # stow -D vim
 ```
 
 ## License
