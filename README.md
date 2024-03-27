@@ -1,11 +1,11 @@
 # Dotfiles
 This is My Linux Dotfiles for my linux desktop, it contains the following configurations:
 
-- `zsh` and `bash` shells configurations.
+- `zsh` and `bash` shell configurations.
 - `.ssh` configurations.
-- `.fonts.conf` configurations.
 - `kitty` terminal configurations.
-- `.wget-hsts` configurations.
+- `.config` directory configurations.
+- `home` general directory configurations.
 
 ## prequisites
 
