@@ -24,6 +24,13 @@ alias frn='flatpak run'
 alias frm='flatpak uninstall'
 alias fs='flatpak search'
 
+# git aliases
+alias gs='git status'
+alias ga='git add .'
+alias pull='git pull'
+alias push='git push'
+alias commit='git commit -m'
+
 # Handy change dir shortcuts
 alias ..='cd ..'
 alias ...='cd ../..'
