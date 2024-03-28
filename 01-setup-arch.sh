@@ -21,15 +21,18 @@ do
 done
 
 # Install pkgs from the AUR
-echo -e "[${Cya}+${Whi}] Installing AUR packages"
-for aur_pkg in $(cat ~/dotfiles/pkgs/aur_pkgs)
-do
-	sudo aura -Acax --noconfirm $aur_pkg
-done
+# echo -e "[${Cya}+${Whi}] Installing AUR packages"
+# for aur_pkg in $(cat ~/dotfiles/pkgs/aur_pkgs)
+# do
+# 	sudo aura -Acax --noconfirm $aur_pkg
+# done
 
 # Change shell for eladwy
 echo -e "[${Red}*${Whi}] Changing shell for user"
 sudo usermod --shell /usr/bin/zsh eladwy 
 
-chmod +x ./02-configs.sh
+# Goto next script in dotfiles.
+echo -e "[${Red}*${Whi}] Running next script in dotfiles directory.."
+cd ~/dotfiles
+chmod +x ~/dotfiles/02-configs.sh
 ./02-configs.sh
