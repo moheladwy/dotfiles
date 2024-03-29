@@ -5,6 +5,7 @@ alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 
+# package manager aliases
 alias remove='$aurhelper -Rns' # uninstall package
 alias update='$aurhelper -Syu --noconfirm && flatpak update -y' # update system/package/aur and flatpak apps
 alias install='$aurhelper -S' # install new package
@@ -30,6 +31,10 @@ alias ga='git add .'
 alias pull='git pull'
 alias push='git push'
 alias commit='git commit -m'
+alias clone='git clone'
+
+# lenovo drivers aliases
+alias lenovo='sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py'
 
 # Handy change dir shortcuts
 alias ..='cd ..'
