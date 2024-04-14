@@ -34,5 +34,5 @@ sudo usermod --shell /usr/bin/zsh eladwy
 # Goto next script in dotfiles.
 echo -e "[${Red}*${Whi}] Running next script in dotfiles directory.."
 cd ~/dotfiles
-chmod +x ~/dotfiles/02-configs.sh
-./02-configs.sh
+chmod +x ~/dotfiles/02-config.sh
+./02-config.sh

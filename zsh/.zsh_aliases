@@ -4,16 +4,16 @@ alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
-
+alias la='eza -la  --icons=auto' # hidden list
 # package manager aliases
-alias remove='$aurhelper -Rns' # uninstall package
-alias update='$aurhelper -Syu --noconfirm && flatpak update -y' # update system/package/aur and flatpak apps
-alias install='$aurhelper -S' # install new package
-alias search='$aurhelper -Ss' # list availabe package
+alias remove='yay -Rns' # uninstall package
+alias update='sudo pacman -Syu --noconfirm && yay -Syu --noconfirm && flatpak update -y' # update system/package/aur and flatpak apps
+alias install='yay -S' # install new package
+alias search='yay -Ss' # list availabe package
 
-alias pl='$aurhelper -Qs' # list installed package
-alias pc='$aurhelper -Sc' # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias pl='yay -Qs' # list installed package
+alias pc='yay -Sc' # remove unused cache
+alias po='sudo pacman -Qtdq | sudo pacman -Rns -' # remove unused packages, also try > sudo pacman -Qqd | sudo pacman -Rsu --print -
 alias code='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
 alias brave='brave --enable-chrome-browser-cloud-management'
 
