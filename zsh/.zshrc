@@ -166,10 +166,11 @@ function in {
 
 source ~/.zsh_aliases
 
-# eval "$(zoxide init zsh)"
-
 export PATH=$PATH:$HOME/Development/os-labs/x-tools/arm-training-linux-musleabihf/bin
 export CROSS_COMPILE=arm-linux-
 
 pokemon-colorscripts --no-title -r 1,3,6
+
+eval "$(zoxide init zsh)"
+# source ~/test_zoxide
 
