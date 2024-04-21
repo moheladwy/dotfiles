@@ -22,11 +22,10 @@ Just make sure to read the installation scripts before using it and if there any
 
 - prequisit package for the installation scripts: `git`
 
-```sudo pacman -S git```
-
 ## Installation
 
 ```zsh
+sudo pacman -S git
 cd $HOME
 git clone https://github.com/moheladwy/dotfiles.git dotfiles
 cd dotfiles
