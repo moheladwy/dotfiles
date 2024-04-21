@@ -18,7 +18,7 @@ sudo pacamn -Fyu
 echo ${Sperator}
 
 # Install git
-echo -e "[${Red}+${Whi}] Installing git"
+echo -e "[${Red}+${Whi}] Installing git if not already installed.."
 sudo pacman -S --noconfirm --needed git
 
 echo ${Sperator}
@@ -39,7 +39,7 @@ echo -e "[${Red}+${Whi}] yay version: $(yay --version)" # Print yay version to t
 echo ${Sperator}
 
 # Install Flatpak
-echo -e "[${Red}+${Whi}] Installing flatpak"
+echo -e "[${Red}+${Whi}] Installing flatpak if not already installed.."
 sudo pacman -S --noconfirm --needed flatpak
 
 echo ${Sperator}
@@ -69,8 +69,16 @@ done
 echo ${Sperator}
 
 # Change shell for eladwy
-echo -e "[${Red}*${Whi}] Changing shell for user eladwy to zsh instead of bash"
-sudo usermod --shell /usr/bin/zsh eladwy
+echo -e "[${Red}*${Whi}] Changing shell for the user to zsh instead of bash"
+sudo usermod --shell /usr/bin/zsh $USER
+
+echo ${Sperator}
+
+# Clone zsh-autosuggestions and zsh-syntax-highlighting plugins
+echo -e "[${Red}*${Whi}] Cloning zsh-autosuggestions plugin.."
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+echo -e "[${Red}*${Whi}] Cloning zsh-syntax-highlighting plugin.."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 echo ${Sperator}
 
