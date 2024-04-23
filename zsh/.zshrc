@@ -173,6 +173,6 @@ export CROSS_COMPILE=arm-linux-
 export ARCH=arm
 pokemon-colorscripts --no-title -r 1,3,6
 
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 # source ~/test_zoxide
 
