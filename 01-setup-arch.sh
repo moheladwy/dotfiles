@@ -46,7 +46,7 @@ echo "$Sperator"
 
 # Install pkgs
 echo -e "[${Red}+${Whi}] Installing pacman repo packages.."
-for repo_pkg in "$(cat ~/dotfiles/pkgs/pacman_pkgs)"; do
+for repo_pkg in $(cat ~/dotfiles/pkgs/pacman_pkgs); do
 	sudo pacman -S --noconfirm --needed "$repo_pkg"
 done
 
@@ -54,7 +54,7 @@ echo "$Sperator"
 
 # Install pkgs from the AUR
 echo -e "[$Cya+$Whi] Installing AUR packages using yay.."
-for aur_pkg in "$(cat ~/dotfiles/pkgs/yay_pkgs)"; do
+for aur_pkg in $(cat ~/dotfiles/pkgs/yay_pkgs); do
 	sudo yay -Acax --noconfirm "$aur_pkg"
 done
 
@@ -62,7 +62,7 @@ echo "$Sperator"
 
 # Install Flatpak apps
 echo -e "[${Red}*{$Whi}] Installing Flatpak apps.."
-for flatpak_app in "$(cat ~/dotfiles/pkgs/flatpak_pkgs)"; do
+for flatpak_app in $(cat ~/dotfiles/pkgs/flatpak_pkgs); do
 	flatpak install flathub "$flatpak_app" -y
 done
 
@@ -82,7 +82,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 
 echo "$Sperator"
 
-echo -e "[${Red}*${Whi}] Are You using Lenovo Legion 5 Laptop [y/n](any other answer except y will be considered as no)?  "
+echo -e "[${Red}*${Whi}] Are You using Lenovo Legion 5 Laptop [y/n](any other answer except y will be considered as No)? "
 read -r answer
 
 if [ "$answer" != "${answer#[Yy]}" ]; then
