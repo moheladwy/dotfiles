@@ -7,16 +7,16 @@ alias ld='eza -lhD --icons=auto' # long list dirs
 alias la='eza -la  --icons=auto' # hidden list
 
 # package manager aliases
-alias remove='$aurhelper -Rns' # uninstall package
-alias update='sudo pacman -Syu --noconfirm && $aurhelper -Syu --noconfirm && flatpak update -y' # update system/package/aur and flatpak apps
-alias install='$aurhelper -S --needed' # install new package
-alias search='$aurhelper -Ss' # list availabe package
-alias list='$aurhelper -Qs' # list installed package
+alias remove='$aurhelper -Rns ' # uninstall package
+alias update='sudo pacman -Syu --noconfirm  && $aurhelper -Syu --noconfirm  && flatpak update -y' # update system/package/aur and flatpak apps
+alias install='$aurhelper -S --needed ' # install new package
+alias search='$aurhelper -Ss ' # list available package
+alias list='$aurhelper -Qs ' # list installed packages
 
-alias pc='$aurhelper -Sc' # remove unused cache
-alias po='sudo pacman -Qtdq | sudo pacman -Rns -' # remove unused packages, also try > sudo pacman -Qqd | sudo pacman -Rsu --print -
+alias pc='$aurhelper -Sc ' # remove unused cache
+alias po='sudo pacman -Qtdq  | sudo pacman -Rns  -' # remove unused packages, also try > sudo pacman -Qqd | sudo pacman -Rsu --print -
 
-alias code='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
+alias code='code --disable-gpu' # gui code editor
 alias brave='brave --enable-chrome-browser-cloud-management'  # gui web browser
 alias vim='nvim' # neovim
 
