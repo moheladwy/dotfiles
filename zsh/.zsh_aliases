@@ -9,7 +9,7 @@ alias la='eza -la  --icons=auto' # hidden list
 # package manager aliases
 alias remove='$aurhelper -Rns ' # uninstall package
 alias update='sudo pacman -Syu --noconfirm  && $aurhelper -Syu --noconfirm  && flatpak update -y' # update system/package/aur and flatpak apps
-alias install='$aurhelper -S --needed ' # install new package
+alias install='$aurhelper -S --needed --noconfirm' # install new package
 alias search='$aurhelper -Ss ' # list available package
 alias list='$aurhelper -Qs ' # list installed packages
 
