@@ -10,7 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+export PATH="$PATH:/home/eladwy/.dotnet/tools"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -148,7 +148,6 @@ function in {
     fi
 }
 
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -165,14 +164,7 @@ function in {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.zsh_aliases
+source ~/.embedded-linux-qemu.zsh
 
-
-# OS Labs - ARM Configurations.
-export PATH=$PATH:$HOME/Development/os-labs/x-tools/arm-training-linux-musleabihf/bin
-export CROSS_COMPILE=arm-linux-
-export ARCH=arm
 pokemon-colorscripts --no-title -r 1,3,6
-
-# eval "$(zoxide init zsh)"
-# source ~/test_zoxide
 
