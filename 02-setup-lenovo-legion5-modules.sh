@@ -5,9 +5,7 @@ Whi='\e[0;37m'
 Sperator="======================================================================================="
 
 # setup Lenovo Legion 5 - arch Linux modules.
-
 echo -e "[${Red}*${Whi}] Installig and setup the Lenovo Legion 5 modules for arch linux ..."
-
 echo -e "$Sperator"
 
 echo -e "[${Red}*${Whi}] Installig some dependencies packages for the setup!"
@@ -45,7 +43,7 @@ echo -e "[${Red}*${Whi}] Adding Desktop Entry for the GUI Application..."
 touch ~/.local/share/applications/LenovoLegionLinux.desktop
 FileContent="
 [Desktop Entry]
-Name=Lenovo Legion5 Linux GUI
+Name=Lenovo Legion 5 Linux GUI
 Exec=sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py
 Version=1.0
 Type=Application

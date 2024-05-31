@@ -7,13 +7,13 @@ alias ld='eza -lhD --icons=auto' # long list dirs
 alias la='eza -la  --icons=auto' # hidden list
 
 # package manager aliases
-alias remove='$aurhelper -Rns ' # uninstall package
-alias update='sudo pacman -Syu --noconfirm  && $aurhelper -Syu --noconfirm  && flatpak update -y' # update system/package/aur and flatpak apps
-alias install='$aurhelper -S --needed --noconfirm' # install new package
-alias search='$aurhelper -Ss ' # list available package
-alias list='$aurhelper -Qs ' # list installed packages
+alias remove='yay -Rns ' # uninstall package
+alias update='sudo pacman -Syu --noconfirm  && yay -Syu --noconfirm  && flatpak update -y' # update system/package/aur and flatpak apps
+alias install='yay -S --needed --noconfirm' # install new package
+alias search='yay -Ss ' # list available package
+alias list='yay -Qs ' # list installed packages
 
-alias pc='$aurhelper -Sc ' # remove unused cache
+alias pc='yay -Sc ' # remove unused cache
 alias po='sudo pacman -Qtdq  | sudo pacman -Rns  -' # remove unused packages, also try > sudo pacman -Qqd | sudo pacman -Rsu --print -
 
 alias code='code --disable-gpu' # gui code editor
@@ -35,6 +35,13 @@ alias pull='git pull'
 alias push='git push'
 alias commit='git commit -m'
 alias clone='git clone'
+alias fetch='git fetch'
+alias checkout='git checkout'
+alias branch='git branch'
+alias merge='git merge'
+alias rebase='git rebase'
+alias stash='git stash'
+alias log='git log'
 
 # lenovo drivers aliases
 alias lenovo='sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py'

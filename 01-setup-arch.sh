@@ -2,7 +2,7 @@
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
-# Last Modified: 2024-04-21
+# Last Modified: 2024-05-31
 # ===============================================================================================
 Red='\e[0;31m'
 Gre='\e[0;32m'
@@ -46,25 +46,34 @@ echo "$Sperator"
 
 # Install pkgs
 echo -e "[${Red}+${Whi}] Installing pacman repo packages.."
+pacman_packages=""
 for repo_pkg in $(cat ~/dotfiles/pkgs/pacman_pkgs); do
-	sudo pacman -S --noconfirm --needed "$repo_pkg"
+	pacman_packages+="$repo_pkg "
 done
+
+sudo pacman -S --noconfirm --needed "$pacman_packages"
 
 echo "$Sperator"
 
 # Install pkgs from the AUR
 echo -e "[$Cya+$Whi] Installing AUR packages using yay.."
+yay_pkgs=""
 for aur_pkg in $(cat ~/dotfiles/pkgs/yay_pkgs); do
-	sudo yay -Acax --noconfirm "$aur_pkg"
+	yay_pkgs+="$aur_pkg "
 done
+
+sudo yay -Acax --noconfirm "$yay_pkgs"
 
 echo "$Sperator"
 
 # Install Flatpak apps
 echo -e "[${Red}*{$Whi}] Installing Flatpak apps.."
-for flatpak_app in $(cat ~/dotfiles/pkgs/flatpak_pkgs); do
-	flatpak install flathub "$flatpak_app" -y
+flatpak_pkgs=""
+for flatpak_app in "$(cat ~/dotfiles/pkgs/flatpak_pkgs)"; do
+	flatpak_pkgs+="$flatpak_app "
 done
+
+flatpak install flathub "$flatpak_pkgs" -y
 
 echo "$Sperator"
 
