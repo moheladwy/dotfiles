@@ -2,31 +2,30 @@
 # Title: Arch Linux (Lenovo Legion 5 Modules) Setup Script
 # Description: This script is part of the dotfiles and is used to setup Lenovo Legion 5 Modules on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
-# Last Modified: 2024-05-31
+# Last Modified: 2024-07-20
 # ==============================================================================================================
 Red='\e[0;31m'
 Gre='\e[0;32m'
-Cya='\e[0;36m'
 Whi='\e[0;37m'
-Sperator="======================================================================================="
 
 # setup Lenovo Legion 5 - arch Linux modules.
-echo -e "➞ [${Red}*${Whi}] Installig and setup the Lenovo Legion 5 modules for arch linux ..."
+echo -e "➞ [${Gre}*${Whi}] Installig and setup the Lenovo Legion 5 modules for arch linux ..."
 
 # Install some dependencies packages for the setup
-echo -e "➞ [${Red}*${Whi}] Installig some dependencies packages for the setup!"
+echo -e "➞ [${Gre}*${Whi}] Installig some dependencies packages for the setup!"
 sudo pacman -S --needed linux-headers base-devel lm_sensors git dmidecode python-pyqt5 python-yaml python-argcomplete python-darkdetect
 
 # Install the following for installation with DKMS
 sudo pacman -S --needed dkms openssl mokutil
 
-echo -e "➞ [${Red}*${Whi}] making directory src in home if not exists..."
+echo -e "➞ [${Gre}*${Whi}] making directory src in home if not exists..."
 
 if [ ! -d ~/src ]; then
 	mkdir -p ~/src
 fi
 cd ~/src || return
 
+echo -e "➞ [${Gre}*${Whi}] Cloning the Lenovo Legion 5 modules from the github repo..."
 git clone https://github.com/johnfanv2/LenovoLegionLinux.git
 cd LenovoLegionLinux/kernel_module || return
 
@@ -36,34 +35,50 @@ sudo make reloadmodule
 make
 sudo make dkms
 
-output=$(sudo dmesg || grep -i "legion_laptop loaded for this device")
-good_output="legion_laptop loaded for this device"
+sudo dmesg >> ~/dmesg-file
+wanted_output="legion_laptop loaded for this device"
+output=$(grep -ixo "$wanted_output" ~/dmesg-file)
 
-if [ "$output" = "$good_output" ]; then
+if [ "$output" = "$wanted_output" ]; then
 	echo -e "➞ [${Gre}*${Whi}] the modules installed successfully!"
+	rm ~/dmesg-file
 else
-	echo -e "➞ [${Red}*${Whi}] the modules couldn't be installed successfully!"
+	echo -e "${Red}➞ [*] the modules couldn't be installed successfully!"
+	echo -e "${Red}➞ [*] Please check the output of the dmesg command from dmesg-file to see what went wrong!"
+	echo -e "${Red}➞ [*] or check the github repo for more information: https://github.com/johnfanv2/LenovoLegionLinux.git"
+	echo -e "${Red}➞ [*] Exiting the script!"
+	echo -e "${Whi}"
 	exit 1
 fi
 
-echo "export PATH=$PATH:$HOME/src/LenovoLegionLinux/python/legion_linux/legion_linux" >>~/.zshrc
+echo -e "➞ [${Gre}*${Whi}] Adding Desktop Entry for the GUI Application..."
 
-echo -e "➞ [${Red}*${Whi}] Adding Desktop Entry for the GUI Application..."
-touch ~/.local/share/applications/LenovoLegionLinux.desktop
 FileContent="
 [Desktop Entry]
-Name=Lenovo Legion 5 Linux Controller GUI
-Exec=sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py
-Version=1.0
-Type=Application
 Categories=System;
+Comment[en_US]=Control Lenovo Legion 5 Laptops with reverse engineered ACPI calls.
+Comment=Control Lenovo Laptop with reverse engineered ACPI calls.
+Exec=$USER/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py
+GenericName[en_US]=Control Lenovo Legion 5 Laptop
+GenericName=Control Lenovo Legion 5 Laptop
+Icon=$USER/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_logo_light.png
+MimeType=
+Name[en_US]=Lenovo Legion 5 Controller
+Name=Lenovo Legion 5 Controller
+Path=$USER/src/LenovoLegionLinux/python/legion_linux/legion_linux/
+StartupNotify=true
 Terminal=true
-Icon=~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_logo_dark.png
-Comment=Control Lenovo Legion 5 Laptops in Arch Linux.
-StartupNotify=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=true
+X-KDE-Username=root
 "
-echo "$FileContent" >>~/.local/share/applications/LenovoLegionLinux.desktop
+echo "$FileContent" >~/.local/share/applications/LenovoLegionLinux.desktop
 
-echo -e "➞ [${Red}*${Whi}] to use the GUI Controller run: sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py"
-echo -e "➞ [${Red}*${Whi}] or from the desktop menu item created..."
-echo -e "➞ [${Gre}*${Whi}] Finished the Lenovo Legion 5 Modules installation for Arch Linux System, for more information visit the github repo for this modules: https://github.com/johnfanv2/LenovoLegionLinux"
+echo -e "${Gre}➞ [*] to use the GUI Controller run: sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py"
+echo -e "${Gre}➞ [*] or from the desktop menu item created..."
+echo -e "${Gre}➞ [*] Finished the Lenovo Legion 5 Modules installation for Arch Linux System"
+echo -e "${Gre}➞ [*] for more information visit the github repo for this modules: https://github.com/johnfanv2/LenovoLegionLinux"
+echo -e "${Gre}➞ [*] Exiting ./02-setup-lenovo-legion5-modules.sh script!"
+echo -e "${Whi}"

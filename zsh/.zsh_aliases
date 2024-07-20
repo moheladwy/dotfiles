@@ -1,10 +1,17 @@
 # Helpful aliases
+alias mkdir='mkdir -pv' # Always mkdir a path (this doesn't inhibit functionality to make a single dir) 
 alias cls='clear' # clear terminal
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ll='eza -ilha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias la='eza -la  --icons=auto' # hidden list
+alias cp='cp -irv' # copy with prompt
+alias mv='mv -iv' # move with prompt
+alias rm='rm -iv' # remove with prompt
+alias ln='ln -s' # create symbolic link
+alias ps='ps auxf' # list all processes with a hierarchy tree.
+alias top='nvtop' # system monitor.
 
 # package manager aliases
 alias remove='yay -Rns ' # uninstall package
@@ -12,13 +19,14 @@ alias update='sudo pacman -Syu --noconfirm  && yay -Syu --noconfirm  && flatpak 
 alias install='yay -S --needed --noconfirm' # install new package
 alias search='yay -Ss ' # list available package
 alias list='yay -Qs ' # list installed packages
+alias unused='yay -Qdt' # list unused packages
 
-alias pc='yay -Sc ' # remove unused cache
+alias pc='yay -Sc' # remove unused cache
 alias po='sudo pacman -Qtdq  | sudo pacman -Rns  -' # remove unused packages, also try > sudo pacman -Qqd | sudo pacman -Rsu --print -
 
-alias code='code --disable-gpu' # gui code editor
-alias brave='brave --enable-chrome-browser-cloud-management'  # gui web browser
-alias vim='nvim' # neovim
+alias code='code --disable-gpu'                              # gui code editor
+alias brave='brave --enable-chrome-browser-cloud-management' # gui web browser
+alias vim='nvim'                                             # neovim
 
 # flatpak aliases
 alias fl='flatpak list'
@@ -53,10 +61,10 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
-
 # Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
-# alias ssh='kitten ssh'
+alias ssh='kitten ssh'
 alias server='ssh adawy@13.235.73.231'
+alias ubuntu1='ssh eladwy@192.168.122.146'
+alias ubuntu2='ssh ubuntu2@192.168.122.195'
+alias ubuntu3='ssh ubuntu3@192.168.122.80'
 

@@ -15,10 +15,10 @@ return {
   { import = "astrocommunity.lsp.lsp-lens-nvim" },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.recipes.vscode" },
-  -- { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.comment.ts-comments-nvim" },
 }

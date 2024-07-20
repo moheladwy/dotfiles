@@ -47,6 +47,11 @@ zinit cdreplay -q
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Set the bindkeys for the terminal using zsh.
+bindkey '\e[H'  beginning-of-line
+bindkey '\e[F'  end-of-line
+bindkey '\e[3~' delete-char
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -79,13 +84,5 @@ if [ -f ~/.zsh_aliases ]; then
   source ~/.zsh_aliases
 fi
 
-
-# Source Embedded Linux QEMU.
-#if [ -f ~/.embedded-linux-qemu.zsh ]; then
-#  source ~/.embedded-linux-qemu.zsh
-#fi
-
 pokemon-colorscripts --no-title -r 1,3,6
 
-# echo "Welcome to Kitty Terminal!"
-# echo

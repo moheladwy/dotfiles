@@ -2,7 +2,7 @@
 # Title: Arch Linux (config files) Setup Script.
 # Description: This script is part of the dotfiles and is used to setup the config files on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
-# Last Modified: 2024-05-31
+# Last Modified: 2024-07-20
 # ======================================================================================================
 
 Red='\e[0;31m'
@@ -16,7 +16,7 @@ echo -e "➞ [${Gre}*${Whi}] Starting setup for config files"
 
 # --------
 
-echo -e "➞ [${Red}*${Whi}] Removing old ~/dotfiles-backup for backing up current configs"
+echo -e "➞ [${Gre}*${Whi}] Removing old ~/dotfiles-backup for backing up current configs"
 
 if [ -d ~/dotfiles-backup ]; then
 	rm -rf ~/dotfiles-backup
@@ -27,7 +27,7 @@ fi
 echo -e "➞ [${Gre}*${Whi}] Backing up existing directories in the new ~/dotfiles-backup directory"
 
 mkdir -p ~/dotfiles-backup
-mkdir -p ~/dotfiles-backup/config
+mkdir -p ~/dotfiles-backup/.config
 mkdir -p ~/dotfiles-backup/home
 mkdir -p ~/dotfiles-backup/zsh
 mkdir -p ~/dotfiles-backup/bash
@@ -35,50 +35,46 @@ mkdir -p ~/dotfiles-backup/vim
 
 # --------
 
-echo -e "➞ [${Gre}*${Whi}] Moving existing directories or files in ~/.config to ~/dotfiles-backup/config"
+echo -e "➞ [${Gre}*${Whi}] Moving existing directories or files in ~/ and ~/.config to ~/dotfiles-backup"
 
-cd ~/dotfiles || return
+cd ~ || return
 
-for dir in "$(find .config -maxdepth 1 -mindepth 1 | awk -F "/" '{print $NF}')"; do
-	mv ~/.config/"$dir" ~/dotfiles-backup/config
+for dir in $(ls ~/dotfiles/.config); do
+	if [ -d "$dir" ] || [ -f "$dir" ]; then
+		mv ~/.config/"$dir" ~/dotfiles-backup/.config
+	fi
 done
 
-# --------
-
-echo -e "➞ [${Gre}*${Whi}] Moving existing directories or files in ~/ to ~/dotfiles-backup/home"
-
-for dir in "$(find home -mindepth 1 -maxdepth 1 | awk -F "/" '{print $NF}')"; do
-	mv ~/"$dir" ~/dotfiles-backup/home
+for dir in $(ls ~/dotfiles/zsh); do
+	if [ -d "$dir" ] || [ -f "$dir" ]; then
+		mv ~/"$dir" ~/dotfiles-backup/zsh
+	fi
 done
 
-# --------
-
-echo -e "➞ [${Gre}*${Whi}] Moving existing directories or files in ~/ to ~/dotfiles-backup/zsh"
-
-for dir in "$(find zsh -mindepth 1 -maxdepth 1 | awk -F "/" '{print $NF}')"; do
-	mv ~/"$dir" ~/dotfiles-backup/zsh
+for dir in $(ls ~/dotfiles/bash); do
+	if [ -d "$dir" ] || [ -f "$dir" ]; then
+		mv ~/"$dir" ~/dotfiles-backup/bash
+	fi
 done
 
-# --------
-
-echo -e "➞ [${Gre}*${Whi}] Moving existing directories or files in ~/ to ~/dotfiles-backup/bash"
-
-for dir in "$(find bash -mindepth 1 -maxdepth 1 | awk -F "/" '{print $NF}')"; do
-	mv ~/"$dir" ~/dotfiles-backup/bash
+for dir in $(ls ~/dotfiles/vim); do
+	if [ -d "$dir" ] || [ -f "$dir" ]; then
+		mv ~/"$dir" ~/dotfiles-backup/vim
+	fi
 done
 
-# --------
-
-echo -e "➞ [${Gre}*${Whi}] Moving existing directories or files in ~/ to ~/dotfiles-backup/vim"
-
-for dir in "$(find vim -mindepth 1 -maxdepth 1 | awk -F "/" '{print $NF}')"; do
-	mv ~/"$dir" ~/dotfiles-backup/vim
+for dir in $(ls ~/dotfiles/home); do
+	if [ -d "$dir" ] || [ -f "$dir" ]; then
+		mv ~/"$dir" ~/dotfiles-backup/home
+	fi
 done
 
 # --------
 
 echo -e "➞ [${Gre}*${Whi}] Backups saved in ~/dotfiles-backup"
-echo -e "➞ [${Gre}*${Whi}] Symlinking directories and files of the new dotfiles"
+echo -e "➞ [${Gre}*${Whi}] Symlinking directories and files of the new dotfiles using stow command"
+echo -e "➞ [${Gre}*${Whi}] make sure to have stow installed on your system"
+sudo pacman -S --noconfirm --needed stow
 
 # --------
 
@@ -112,6 +108,8 @@ stow . -t ~
 
 # --------
 
-echo -e "➞ [${Gre}*${Whi}] Finished setting up configs"
+echo -e "${Gre}➞ [*] Finished setting up config files!"
+echo -e "${Gre}➞ [*] Exiting ./03-configs.sh script!"
+echo -e "${Whi}"
 
 # --------
