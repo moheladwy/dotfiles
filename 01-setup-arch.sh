@@ -87,15 +87,7 @@ echo "$Sperator"
 
 # Install pkgs
 echo -e "➞ [${Gre}+${Whi}] Installing pacman repo packages.."
-pacman_packages=""
-for repo_pkg in $(cat ~/dotfiles/pkgs/$pacamn_pkgs_list_name); do
-	pacman_packages+="$repo_pkg "
-done
-
-echo -e "➞ [${Gre}+${Whi}] Installing pacman packages: $pacman_packages"
-
-sudo pacman -S --noconfirm --needed "$pacman_packages"
-
+sudo pacman -S --noconfirm --needed $(cat ~/dotfiles/pkgs/$pacamn_pkgs_list_name)
 sleep 20
 
 # --------
@@ -106,15 +98,7 @@ echo "$Sperator"
 
 # Install pkgs from the AUR
 echo -e "➞ [${Gre}+${Whi}] Installing AUR packages using yay.."
-yay_pkgs=""
-for aur_pkg in $(cat ~/dotfiles/pkgs/$aur_pkgs_list_name); do
-	yay_pkgs+="$aur_pkg "
-done
-
-echo -e "➞ [${Gre}+${Whi}] Installing AUR packages: $yay_pkgs"
-
-yay -cax --noconfirm "$yay_pkgs"
-
+yay -S --needed --noconfirm $(cat ~/dotfiles/pkgs/$aur_pkgs_list_name)
 sleep 20
 
 # --------
@@ -125,12 +109,7 @@ echo "$Sperator"
 
 # Install Flatpak apps
 echo -e "➞ [${Gre}+${Whi}] Installing Flatpak apps.."
-flatpak_pkgs=""
-for flatpak_app in $(cat ~/dotfiles/pkgs/$flatpak_pkgs_list_name); do
-	flatpak_pkgs+="$flatpak_app "
-done
-
-flatpak install flathub "$flatpak_pkgs" -y
+flatpak install -y flathub $(cat ~/dotfiles/pkgs/$flatpak_pkgs_list_name)
 
 # --------
 
