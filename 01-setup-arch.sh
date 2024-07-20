@@ -57,10 +57,6 @@ fi
 
 if [ -d ~/src/yay ]; then
 	echo -e "➞ [${Gre}+${Whi}] yay is already installed."
-	echo -e "➞ [${Gre}+${Whi}] Updating yay.."
-	cd ~/src/yay || return
-	git pull
-	makepkg -sfci --noconfirm --needed
 	echo -e "➞ [${Gre}+${Whi}] yay version: $(yay --version)"
 else
 	echo -e "➞ [${Gre}+${Whi}] yay is not installed."
@@ -96,7 +92,11 @@ for repo_pkg in $(cat ~/dotfiles/pkgs/$pacamn_pkgs_list_name); do
 	pacman_packages+="$repo_pkg "
 done
 
+echo -e "➞ [${Gre}+${Whi}] Installing pacman packages: $pacman_packages"
+
 sudo pacman -S --noconfirm --needed "$pacman_packages"
+
+sleep 20
 
 # --------
 
@@ -111,7 +111,11 @@ for aur_pkg in $(cat ~/dotfiles/pkgs/$aur_pkgs_list_name); do
 	yay_pkgs+="$aur_pkg "
 done
 
+echo -e "➞ [${Gre}+${Whi}] Installing AUR packages: $yay_pkgs"
+
 yay -cax --noconfirm "$yay_pkgs"
+
+sleep 20
 
 # --------
 
@@ -194,6 +198,9 @@ echo -e "➞ [${Gre}+${Whi}] Running setup config files script.."
 ./03-configs.sh
 
 echo -e "${Gre}➞ [+] Setup for Arch Linux is done."
+echo -e "${Gre}➞ [+] Please logout and login again to see the changes."
+echo -e "${Gre}➞ [+] Exiting ./01-setup-arch.sh script!"
+echo -e "${Whi}"
 echo "$Sperator"
 
 # --------
