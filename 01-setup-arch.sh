@@ -55,14 +55,23 @@ if [ ! -d ~/src ]; then
 	mkdir -p ~/src # Create src directory if it doesn't exist
 fi
 
-cd ~/src || return
-echo -e "➞ [${Gre}+${Whi}] Clone yay from the AUR to ~/src/yay"
-git clone https://aur.archlinux.org/yay.git yay         # Clone yay from the AUR to ~/src/yay
-cd yay || return                                        # Change to yay directory
+if [ -d ~/src/yay ]; then
+	echo -e "➞ [${Gre}+${Whi}] yay is already installed."
+	echo -e "➞ [${Gre}+${Whi}] Updating yay.."
+	cd ~/src/yay || return
+	git pull
+	makepkg -sfci --noconfirm --needed
+	echo -e "➞ [${Gre}+${Whi}] yay version: $(yay --version)"
+else
+	echo -e "➞ [${Gre}+${Whi}] yay is not installed."
+	cd ~/src || return
+	echo -e "➞ [${Gre}+${Whi}] Clone yay from the AUR to ~/src/yay"
+	git clone https://aur.archlinux.org/yay.git yay         # Clone yay from the AUR to ~/src/yay
+	cd yay || return                                        # Change to yay directory
+	makepkg -sfci --noconfirm --needed                      # Build and install yay
+	echo -e "➞ [${Gre}+${Whi}] yay version: $(yay --version)" # Print yay version to terminal.
+fi
 
-makepkg -sfci --noconfirm --needed                      # Build and install yay
-
-echo -e "➞ [${Gre}+${Whi}] yay version: $(yay --version)" # Print yay version to terminal.
 
 # --------
 
@@ -102,7 +111,7 @@ for aur_pkg in $(cat ~/dotfiles/pkgs/$aur_pkgs_list_name); do
 	yay_pkgs+="$aur_pkg "
 done
 
-sudo yay -Acax --noconfirm "$yay_pkgs"
+yay -cax --noconfirm "$yay_pkgs"
 
 # --------
 
