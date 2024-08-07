@@ -1,0 +1,10 @@
+# package manager aliases
+alias remove='sudo apt remove'                                             # uninstall package
+alias update='sudo apt update && sudo apt -y upgrade && flatpak update -y' # update system/package/aur and flatpak apps
+alias install='sudo apt install -y'                                        # install new package
+alias search='apt search'                                                  # list available package
+alias list='apt list'                                                      # list installed packages
+alias info='apt show'                                                      # show package info
+alias clean='sudo apt clean'                                               # clean cache
+alias cleanall='sudo apt autoclean'                                        # clean all cache
+alias autoremove='sudo apt autoremove'                                     # remove unused packages

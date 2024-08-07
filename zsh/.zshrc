@@ -31,7 +31,6 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 
 zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
@@ -51,6 +50,14 @@ zinit cdreplay -q
 bindkey '\e[H'  beginning-of-line
 bindkey '\e[F'  end-of-line
 bindkey '\e[3~' delete-char
+
+# Set the bindkeys for the ctrl+arrow keys
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+
+# Set the bindkeys for the ctrl+shift+arrow keys
+bindkey '^[[1;6C' forward-word
+bindkey '^[[1;6D' backward-word
 
 # History
 HISTSIZE=5000
@@ -81,8 +88,13 @@ fi
 
 # Source Aliases
 if [ -f ~/.zsh_aliases ]; then
-  source ~/.zsh_aliases
+   source ~/.zsh_aliases
+   source ~/dotfiles/zsh/.zsh_arch_aliases # package manager aliases
 fi
 
-pokemon-colorscripts --no-title -r 1,3,6
 
+export PATH=$PATH:/home/eladwy/.local/bin
+export JAVA_HOME=/usr/lib/jvm/jdk-22
+export PATH=$PATH:$JAVA_HOME:/opt/Jetbrains/scripts
+
+neofetch 

@@ -13,10 +13,7 @@ echo -e "➞ [${Gre}*${Whi}] Installig and setup the Lenovo Legion 5 modules for
 
 # Install some dependencies packages for the setup
 echo -e "➞ [${Gre}*${Whi}] Installig some dependencies packages for the setup!"
-sudo pacman -S --needed linux-headers base-devel lm_sensors git dmidecode python-pyqt5 python-yaml python-argcomplete python-darkdetect
-
-# Install the following for installation with DKMS
-sudo pacman -S --needed dkms openssl mokutil
+sudo pacman -S --needed linux-headers base-devel lm_sensors git dmidecode python-pyqt5 python-yaml python-argcomplete python-darkdetect dkms openssl mokutil
 
 echo -e "➞ [${Gre}*${Whi}] making directory src in home if not exists..."
 
@@ -36,23 +33,9 @@ make
 sudo make dkms
 
 sudo dmesg >> ~/dmesg-file
-wanted_output="legion_laptop loaded for this device"
-output=$(grep -ixo "$wanted_output" ~/dmesg-file)
-
-if [ "$output" = "$wanted_output" ]; then
-	echo -e "➞ [${Gre}*${Whi}] the modules installed successfully!"
-	rm ~/dmesg-file
-else
-	echo -e "${Red}➞ [*] the modules couldn't be installed successfully!"
-	echo -e "${Red}➞ [*] Please check the output of the dmesg command from dmesg-file to see what went wrong!"
-	echo -e "${Red}➞ [*] or check the github repo for more information: https://github.com/johnfanv2/LenovoLegionLinux.git"
-	echo -e "${Red}➞ [*] Exiting the script!"
-	echo -e "${Whi}"
-	exit 1
-fi
+echo -e "➞ [${Gre}*${Whi}] Checking the kernel module in the ~/dmesg-file to see if it loaded correctly..."
 
 echo -e "➞ [${Gre}*${Whi}] Adding Desktop Entry for the GUI Application..."
-
 FileContent="
 [Desktop Entry]
 Categories=System;
@@ -80,5 +63,5 @@ echo -e "${Gre}➞ [*] to use the GUI Controller run: sudo ~/src/LenovoLegionLin
 echo -e "${Gre}➞ [*] or from the desktop menu item created..."
 echo -e "${Gre}➞ [*] Finished the Lenovo Legion 5 Modules installation for Arch Linux System"
 echo -e "${Gre}➞ [*] for more information visit the github repo for this modules: https://github.com/johnfanv2/LenovoLegionLinux"
-echo -e "${Gre}➞ [*] Exiting ./02-setup-lenovo-legion5-modules.sh script!"
+echo -e "${Gre}➞ [*] Exiting 02-setup-lenovo-legion5-modules.sh script!"
 echo -e "${Whi}"

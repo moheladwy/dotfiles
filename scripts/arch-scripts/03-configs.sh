@@ -81,6 +81,13 @@ sudo pacman -S --noconfirm --needed stow
 echo -e "➞ [${Gre}*${Whi}] Symlinking directories in .config directory"
 cd ~/dotfiles/.config || return
 stow . -t ~/.config
+for dir in $(ls); do
+	if [ -d "$dir" ]; then
+		rm -rf ~/.config/"$dir"
+		mkdir -p ~/.config/"$dir"
+		stow "$dir" -t ~/.config/"$dir"
+	fi
+done
 
 # --------
 
