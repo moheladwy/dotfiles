@@ -12,6 +12,8 @@ alias rm='rm -iv'
 alias ln='ln -s'                                                        
 alias ps='ps auxf'                                                      
 alias top='nvtop'                                    
+alias df='df -h'
+alias du='du -h --max-depth=1'
 alias brave='brave --enable-chrome-browser-cloud-management'            
 alias vim='nvim'			                                            
 
@@ -38,6 +40,22 @@ alias rebase='git rebase'
 alias stash='git stash'
 alias log='git log'
 
+alias ts='~/.config/ml4w/scripts/snapshot.sh'
+alias wifi='nmtui'
+alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
+
+# -----------------------------------------------------
+# ML4W Apps
+# -----------------------------------------------------
+alias ml4w='com.ml4w.welcome'
+alias ml4w-settings='com.ml4w.dotfilessettings'
+alias ml4w-hyprland='com.ml4w.hyprland.settings'
+alias ml4w-sidebar='ags -t sidebar'
+alias ml4w-diagnosis='~/.config/hypr/scripts/diagnosis.sh'
+alias ml4w-hyprland-diagnosis='~/.config/hypr/scripts/diagnosis.sh'
+alias ml4w-qtile-diagnosis='~/.config/ml4w/qtile/scripts/diagnosis.sh'
+alias ml4w-update='~/.config/ml4w/update.sh'
+
 # lenovo drivers aliases
 alias lenovo='sudo ~/src/LenovoLegionLinux/python/legion_linux/legion_linux/legion_gui.py'
 
@@ -51,5 +69,4 @@ alias .5='cd ../../../../..'
 # Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
 alias ssh='kitten ssh'
 alias server='ssh adawy@13.235.73.231'
-alias arch-1='ssh arch-1@192.168.122.202'
-alias arch-2='ssh arch-2@192.168.122.243'
+alias my-server='ssh admin@13.50.56.110'

@@ -1,3 +1,18 @@
+#            _              
+#    _______| |__  _ __ ___ 
+#   |_  / __| '_ \| '__/ __|
+#  _ / /\__ \ | | | | | (__ 
+# (_)___|___/_| |_|_|  \___|
+#                           
+
+# DON'T CHANGE THIS FILE
+
+# You can define your custom configuration by adding
+# files in ~/.config/zshrc 
+# or by creating a folder ~/.config/zshrc/custom
+# with copies of files from ~/.config/zshrc 
+# -----------------------------------------------------
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -29,11 +44,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-
 zinit snippet OMZP::sudo
-zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::zoxide
 zinit snippet OMZP::fzf
@@ -88,13 +100,13 @@ fi
 
 # Source Aliases
 if [ -f ~/.zsh_aliases ]; then
-   source ~/.zsh_aliases
+   source ~/dotfiles/zsh/.zsh_aliases
    source ~/dotfiles/zsh/.zsh_arch_aliases # package manager aliases
 fi
 
 
 export PATH=$PATH:/home/eladwy/.local/bin
-export JAVA_HOME=/usr/lib/jvm/jdk-22
 export PATH=$PATH:$JAVA_HOME:/opt/Jetbrains/scripts
 
-neofetch 
+
+fastfetch --config examples/7
