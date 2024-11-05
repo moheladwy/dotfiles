@@ -1,4 +1,4 @@
-#            _              
+# /           _              
 #    _______| |__  _ __ ___ 
 #   |_  / __| '_ \| '__/ __|
 #  _ / /\__ \ | | | | | (__ 
@@ -100,13 +100,10 @@ fi
 
 # Source Aliases
 if [ -f ~/.zsh_aliases ]; then
-   source ~/dotfiles/zsh/.zsh_aliases
-   source ~/dotfiles/zsh/.zsh_arch_aliases # package manager aliases
+   source ~/dotfiles/zsh/.zsh_aliases      # general aliases.
+   source ~/dotfiles/zsh/.zsh_arch_aliases # package manager aliases.
 fi
 
-
-export PATH=$PATH:/home/eladwy/.local/bin
-export PATH=$PATH:$JAVA_HOME:/opt/Jetbrains/scripts
-
+export PATH=$PATH:/home/eladwy/.local/bin:/opt/Jetbrains/scripts
 
 fastfetch --config examples/7
