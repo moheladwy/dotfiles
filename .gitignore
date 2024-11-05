@@ -1,6 +1,6 @@
 zsh/.zsh_history
 zsh/.zcompdump
 bash/.bash_history
-.config/ml4w/cache
-.config/hypr/shaders
-.ssh 
+.config/ml4w/cache/*
+.config/hypr/shaders/*
+.ssh
