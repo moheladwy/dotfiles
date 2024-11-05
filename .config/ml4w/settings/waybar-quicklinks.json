@@ -7,7 +7,7 @@
     "custom/quicklink2": {
         "format": "",
         "on-click": "~/.config/ml4w/settings/browser.sh",
-        "tooltip-format": "Open Firefox"
+        "tooltip-format": "Open browser"
     },
     "custom/quicklink3": {
         "format": "",
@@ -30,16 +30,49 @@
         "tooltip-format": "Open emoji picker"
     }, 
     "custom/quicklinkempty": {
-    }, 
-    "group/quicklinks": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/quicklink2",
-            "custom/quicklink3",
-            /*
-            "custom/quicklink4",
-            */
-            "custom/quicklinkempty"
-        ]
-    }
+    },
+    
+    "custom/vscode": {
+        "format": "",
+        "on-click": "code",
+        "tooltip-format": "Visual Studio Code"
+    },
+    
+    "custom/spotify": {
+        "format": "",
+        "on-click": "spotube",
+        "tooltip-format": "Spotube"
+    },
+
+    "custom/kvm": {
+        "format": "",
+        "on-click": "virt-manager",
+        "tooltip-format": "Virtual Machine Manager"
+    },
+
+    "custom/discord": {
+        "format": "",
+        "on-click": "flatpak run dev.vencord.Vesktop",
+        "tooltip-format": "discord"
+    },
+
+    "custom/linutil": {
+        "format": "",
+        "on-click": "kitty linutil",
+        "tooltip-format": "Linux Utilities from Chris Titus Tech"
+    },
+   
+   "group/quicklinks": {
+       "orientation": "horizontal",
+       "modules": [
+           "custom/quicklink2",
+           "custom/quicklink3",
+           "custom/vscode",
+           "custom/spotify",
+           "custom/discord",
+           "custom/kvm",
+           "custom/linutil",
+           "custom/quicklinkempty"
+       ]
+   }
 }

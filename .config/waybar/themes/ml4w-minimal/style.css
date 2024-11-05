@@ -20,7 +20,7 @@
 @define-color workspacesbackground2 #CCCCCC;
 @define-color bordercolor #FFFFFF;
 @define-color textcolor1 #000000;
-@define-color textcolor2 #202020;
+@define-color textcolor2 #000000;
 @define-color textcolor3 #FFFFFF;
 @define-color iconcolor #FFFFFF;
 
@@ -85,7 +85,7 @@ tooltip {
     background-color: @backgroundlight;
     opacity:0.8;
     padding:20px;
-    margin:1px;
+    margin:0px;
 }
 
 tooltip label {
@@ -188,18 +188,6 @@ window#waybar.empty #window {
 
 #custom-wallpaper {
     margin-right: 14px;
-}
-
-#custom-vscode {
-    margin-right: 10px;
-}
-
-#custom-spotify {
-    margin-right: 10px;
-}
-
-#custom-discord {
-    margin-right: 10px;
 }
 
 #custom-chatgpt {

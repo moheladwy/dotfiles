@@ -43,5 +43,5 @@ do
     fi 
 done < "$config_file"
 
-sleep 0.2
+sleep 0.1
 rofi -dmenu -i -markup -eh 2 -replace -p "Keybinds" -config ~/.config/rofi/config-compact.rasi <<< "$keybinds"
