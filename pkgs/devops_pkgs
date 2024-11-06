@@ -1,0 +1,11 @@
+git
+github-cli
+ansible
+ansible-core
+ansible-lint
+python-ansible-compat
+minikube
+kubectl
+kubectx
+helm
+helmfile

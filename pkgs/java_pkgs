@@ -1,0 +1,8 @@
+ant
+java-environment-common
+java-runtime-common
+js128
+jdk-openjdk
+java-hamcrest
+maven
+ca-certificates-utils
