@@ -1,13 +1,13 @@
+#! /bin/bash
 # ===============================================================================================
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
 # Last Modified: 2024-11-06
 # ===============================================================================================
-#! /bin/bash
 
 # --------
-source "$dotfiles_dir/scripts/env_variables.sh"
+source "$HOME/dotfiles/scripts/env_variables.sh"
 # --------
 
 # --------
@@ -15,7 +15,7 @@ welcome_message() {
 	echo -e "$Sperator"
 	echo -e "${Gre}➞ [+] Starting setup for Arch Linux:${Whi}"
 	echo -e "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
 # --------
@@ -25,34 +25,34 @@ claim_sudo() {
 
 	# Keep sudo rights
 	while true; do
-			sudo -n true
-			sleep 60
-			kill -0 "$$" || exit
+		sudo -n true
+		sleep 60
+		kill -0 "$$" || exit
 	done 2>/dev/null &
 }
 
 # --------
 enable_multilib() {
-    if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
-        echo "Enabling multilib repository..."
-        sudo tee -a /etc/pacman.conf >/dev/null <<EOT
+	if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
+		echo "Enabling multilib repository..."
+		sudo tee -a /etc/pacman.conf >/dev/null <<EOT
 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 EOT
-        echo "Multilib repository has been enabled."
-    else
-        echo "Multilib repository is already enabled."
-    fi
+		echo "Multilib repository has been enabled."
+	else
+		echo "Multilib repository is already enabled."
+	fi
 }
 
 # --------
 update_system() {
-    echo -e "${Gre}➞ [+] Updating system..${Whi}"
-    sudo pacman -Syyu --noconfirm
-    sudo pacman -Fyu --noconfirm
-    echo "$Sperator"
-    sleep $sleep_time
+	echo -e "${Gre}➞ [+] Updating system..${Whi}"
+	sudo pacman -Syyu --noconfirm
+	sudo pacman -Fyu --noconfirm
+	echo "$Sperator"
+	sleep "$sleep_time"
 }
 
 # --------
@@ -105,7 +105,7 @@ setup_lenovo_legion5_modules() {
 		echo -e "${Cya}➞ [+] Installing Lenovo Legion 5 kernel modules for Arch Linux..${Whi}"
 		cd "$dotfiles_dir" || return
 		chmod +x "$dotfiles_dir/$arch_scripts_dir/setup-lenovo-legion5-modules.sh"
-		./"$dotfiles_dir/$arch_scripts_dir/setup-lenovo-legion5-modules.sh"
+		"$dotfiles_dir/$arch_scripts_dir/setup-lenovo-legion5-modules.sh"
 	fi
 
 	echo "$Sperator"
@@ -113,13 +113,27 @@ setup_lenovo_legion5_modules() {
 }
 
 # --------
+setup_kvm() {
+	echo -e "${Cya}➞ [+] Do you want to setup KVM for Arch Linux [y/n]? ${Whi}"
+	read -r answer
+
+	if [ "$answer" != "${answer#[Yy]}" ]; then
+		chmod +x "$dotfiles_dir/$arch_scripts_dir/setup-kvm.sh"
+		"$dotfiles_dir/$arch_scripts_dir/setup-kvm.sh"
+	fi
+
+	echo "$Sperator"
+	sleep "$sleep_time"
+}
+
+# --------
 setup_configuration_files() {
 	cd "$dotfiles_dir" || return
 	echo -e "${Gre}➞ [+] Changing permissions for setup config files script and making it executable${Whi}"
-	chmod +x "$dotfiles_dir/$arch_scripts_dir/configs.sh"
+	chmod +x "$dotfiles_dir/$arch_scripts_dir/setup-configs.sh"
 
 	echo -e "${Gre}➞ [+] Running setup config files script..${Whi}"
-	./"$dotfiles_dir/$arch_scripts_dir/configs.sh"
+	"$dotfiles_dir/$arch_scripts_dir/setup-configs.sh"
 
 	echo "$Sperator"
 	sleep $sleep_time
@@ -130,9 +144,10 @@ final_message() {
 	echo -e "${Gre}➞ [+] Setup for Arch Linux is done.${Whi}"
 	echo -e "${Gre}➞ [+] Please logout and login again to see the changes.${Whi}"
 	echo "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
+# --------
 main() {
 	welcome_message
 	claim_sudo
@@ -142,6 +157,10 @@ main() {
 	change_shell
 	install_zsh_plugins
 	setup_lenovo_legion5_modules
+	setup_kvm
 	setup_configuration_files
+	update_system
 	final_message
 }
+
+main

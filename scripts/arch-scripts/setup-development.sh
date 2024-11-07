@@ -1,13 +1,13 @@
+#! /bin/bash
 # ===============================================================================================
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
 # Last Modified: 2024-11-06
 # ===============================================================================================
-#! /bin/bash
 
 # --------
-source "$dotfiles_dir/scripts/env_variables.sh"
+source "$HOME/dotfiles/scripts/env_variables.sh"
 # --------
 
 # --------
@@ -63,46 +63,76 @@ install_nodejs() {
 }
 
 # --------
-choose_development_tools() {
+run_IDE_installation() {
 	echo -e "${Cya}➞ [+] Do you want to install IDEs tools? ${Whi}"
 	read -r answer
 	if [ "$answer" == "y" ]; then
 		install_IDEs
 	fi
+}
 
+# --------
+run_dotnet_installation() {
 	echo -e "${Cya}➞ [+] Do you want to install dotnet? ${Whi}"
-  read -r answer
-  if [ "$answer" == "y" ]; then
-    install_dotnet
-  fi
-
-  echo -e "${Cya}➞ [+] Do you want to install java? ${Whi}"
-  read -r answer
-  if [ "$answer" == "y" ]; then
-    install_java
-  fi
-
-  echo -e "${Cya}➞ [+] Do you want to install nodejs? ${Whi}"
-  read -r answer
-  if [ "$answer" == "y" ]; then
-    install_nodejs
-  fi
-
-  echo -e "${Cya}➞ [+] Do you want to install docker? ${Whi}"
-  read -r answer
-  if [ "$answer" == "y" ]; then
-    install_docker
-  fi
-
-  echo -e "${Cya}➞ [+] Do you want to install devops tools? ${Whi}"
-  read -r answer
-  if [ "$answer" == "y" ]; then
-    install_devops
+	read -r answer
+	if [ "$answer" == "y" ]; then
+		install_dotnet
 	fi
+}
 
-	echo -e "${Cya}➞ [+] Development tools installed successfully.${Whi}"
+# --------
+run_java_installation() {
+	echo -e "${Cya}➞ [+] Do you want to install java? ${Whi}"
+	read -r answer
+	if [ "$answer" == "y" ]; then
+		install_java
+	fi
+}
+
+# --------
+run_nodejs_installation() {
+	echo -e "${Cya}➞ [+] Do you want to install nodejs? ${Whi}"
+	read -r answer
+	if [ "$answer" == "y" ]; then
+		install_nodejs
+	fi
+}
+
+# --------
+run_docker_installation() {
+	echo -e "${Cya}➞ [+] Do you want to install docker? ${Whi}"
+	read -r answer
+	if [ "$answer" == "y" ]; then
+		install_docker
+	fi
+}
+
+# --------
+run_devops_installation() {
+	echo -e "${Cya}➞ [+] Do you want to install devops tools? ${Whi}"
+	read -r answer
+	if [ "$answer" == "y" ]; then
+		install_devops
+	fi
+}
+
+# --------
+choose_development_tools() {
+	run_IDE_installation
+
+	run_dotnet_installation
+
+	run_java_installation
+
+	run_nodejs_installation
+
+	run_docker_installation
+
+	run_devops_installation
+
+	echo -e "${Gre}➞ [+] Development tools installed successfully.${Whi}"
 	echo "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
 choose_development_tools

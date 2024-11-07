@@ -20,7 +20,6 @@ virtio-win
 vulkan-virtio
 virtiofsd
 vde2
-libvirt
 qemu-system-microblaze-firmware
 qemu-system-riscv-firmware
 qemu-system-s390x-firmware
@@ -89,9 +88,6 @@ qemu-user
 qemu-img
 qemu-tests
 qemu-tools
-qemu-base
-qemu-desktop
-qemu-full
 tuned
 guestfs-tools
 swtpm
