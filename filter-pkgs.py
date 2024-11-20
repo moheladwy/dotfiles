@@ -1,5 +1,5 @@
 def read_packages(filename):
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         return set(line.strip() for line in f if line.strip())
 
 
@@ -12,10 +12,10 @@ def filter_pkgs(all_pkgs, *pkg_files):
 
 
 def save_pkgs(pkgs, filename):
-    with open(filename, 'w') as file:
+    with open(filename, "w") as file:
         file.truncate(0)  # Wipe the file content first
         for pkg in sorted(pkgs):
-            file.write(pkg + '\n')
+            file.write(pkg + "\n")
 
 
 # Read all package lists
@@ -39,11 +39,25 @@ hyprland_pkgs = "pkgs/hyprland_pkgs"
 
 
 # Remove packages from all_pkgs.
-filtered_pkgs = filter_pkgs(all_pkgs, nvidia_pkgs, kvm_pkgs, kde_pkgs,
-                            devops_pkgs, node_pkgs, java_pkgs, docker_pkgs,
-                            dotnet_pkgs, browsers_pkgs, filemanagers_pkgs,
-                            monitors_pkgs, terminal_pkgs, IDEs_pkgs,
-                            telecom_pkgs, theme_pkgs, hyprland_pkgs)
+filtered_pkgs = filter_pkgs(
+    all_pkgs,
+    nvidia_pkgs,
+    kvm_pkgs,
+    kde_pkgs,
+    devops_pkgs,
+    node_pkgs,
+    java_pkgs,
+    docker_pkgs,
+    dotnet_pkgs,
+    browsers_pkgs,
+    filemanagers_pkgs,
+    monitors_pkgs,
+    terminal_pkgs,
+    IDEs_pkgs,
+    telecom_pkgs,
+    theme_pkgs,
+    hyprland_pkgs,
+)
 
 # Save the remaining packages to all_pkgs.
 save_pkgs(filtered_pkgs, all_pkgs)
