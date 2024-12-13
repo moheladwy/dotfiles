@@ -1,7 +1,7 @@
 # package manager aliases
-alias remove='yay -R'                                               # uninstall package
-alias update='yay -Syu --noconfirm --needed && flatpak update -y'   # update system/package/aur and flatpak apps
-alias install='yay -S --noconfirm --needed'                         # install new package
+alias r='yay -R'                                               # uninstall package
+alias u='yay -Syu --noconfirm --needed && flatpak update -y'   # update system/package/aur and flatpak apps
+alias i='yay -S --noconfirm --needed'                         # install new package
 alias s='yay -Ss'                                                   # list available package
 alias list='yay -Qe'                                                # list installed packages
 alias info='yay -Qi'                                                # show package info

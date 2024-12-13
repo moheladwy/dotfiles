@@ -5,3 +5,4 @@ bash/.bash_history
 .config/ml4w/cache/wallpaper-generated/*
 .config/hypr/shaders/*
 .ssh
+scripts/arch-scripts/.cache
