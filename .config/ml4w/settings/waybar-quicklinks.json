@@ -52,7 +52,7 @@
 
     "custom/discord": {
         "format": "",
-        "on-click": "flatpak run dev.vencord.Vesktop",
+        "on-click": "vesktop",
         "tooltip-format": "discord"
     },
 
