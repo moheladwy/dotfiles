@@ -13,13 +13,14 @@ Playlists=(
   https://open.spotify.com/playlist/3c2E7bUuS4TzflMS7YtRfx?si=f7630e95fb024363
   https://open.spotify.com/playlist/5Bj7j5mDK9qS92GoHiC1V2?si=9b752be2edf7447f
   https://open.spotify.com/playlist/5cKr9Y56puMJer6XMpJobs?si=eafc87abd66a4dec
+  https://open.spotify.com/playlist/7x3SiAEJqhboWuO4Q7mOWT
 )
 
 # Output Directory
 OutputDir="$HOME/Music/spotify"
 
 # Number of cores to use.
-Cores=11
+Cores=12
 
 # Skip adblock
 SkipAdBlock=y

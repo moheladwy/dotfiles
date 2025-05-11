@@ -71,6 +71,7 @@ alias .5='cd ../../../../..'
 alias ssh='kitten ssh'
 alias server='ssh adawy@13.235.73.231'
 alias my-server='ssh admin@13.50.56.110'
+alias hostinger='ssh root@expertbridge.duckdns.org'
 
 # -----------------------------------------------------
 # Linutil aliases

@@ -104,6 +104,4 @@ if [ -f ~/.zsh_aliases ]; then
    source ~/dotfiles/zsh/.zsh_arch_aliases # package manager aliases.
 fi
 
-export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$HOME/.dotnet/tools
-
-fastfetch --config examples/7
+export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$HOME/.dotnet/tools:$HOME/.spicetify:/home/eladwy/.lmstudio/bin
