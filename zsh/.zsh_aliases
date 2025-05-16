@@ -1,21 +1,21 @@
 # Helpful aliases
-alias mkdir='mkdir -pv'                                                 
-alias cls='clear'                                                       
-alias  l='eza -lh  --icons=auto'                                        
-alias ls='eza -1   --icons=auto'                                        
-alias ll='eza -ilha --icons=auto --sort=name --group-directories-first' 
-alias ld='eza -lhD --icons=auto'                                        
-alias la='eza -la  --icons=auto'                                        
-alias cp='cp -irv'                                                      
-alias mv='mv -iv'                                                       
-alias rm='rm -iv'                                                       
-alias ln='ln -s'                                                        
-alias ps='ps auxf'                                                      
-alias top='nvtop'                                    
+alias mkdir='mkdir -pv'
+alias cls='clear'
+alias l='eza -lh  --icons=auto'
+alias ls='eza -1   --icons=auto'
+alias ll='eza -ilha --icons=auto --sort=name --group-directories-first'
+alias ld='eza -lhD --icons=auto'
+alias la='eza -la  --icons=auto'
+alias cp='cp -irv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias ln='ln -s'
+alias ps='ps auxf'
+alias top='nvtop'
 alias df='df -h'
 alias du='du -h --max-depth=1'
-alias brave='brave --enable-chrome-browser-cloud-management'            
-alias vim='nvim'			                                            
+alias brave='brave --enable-chrome-browser-cloud-management'
+alias vim='nvim'
 alias ports='sudo lsof -i -P -n'
 
 # flatpak aliases
@@ -69,11 +69,7 @@ alias .5='cd ../../../../..'
 
 # Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
 alias ssh='kitten ssh'
-alias server='ssh adawy@13.235.73.231'
-alias my-server='ssh admin@13.50.56.110'
-alias hostinger='ssh root@expertbridge.duckdns.org'
 
 # -----------------------------------------------------
 # Linutil aliases
 alias linutildev='curl -fsSL https://christitus.com/linuxdev | sh'
-
