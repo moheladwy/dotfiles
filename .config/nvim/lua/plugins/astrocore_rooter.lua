@@ -1,4 +1,5 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
@@ -11,8 +12,9 @@ return {
       --   fun(bufnr: integer): string|string[] : a function that takes a buffer number and outputs detected roots
       detector = {
         "lsp", -- highest priority is getting workspace from running language servers
-        { ".git", "_darcs", ".hg", ".bzr", ".svn", ".sln", ".slnx", ".csproj" }, -- next check for a version controlled parent directory
-        { "lua", "MakeFile", "Makefile", "package.json", ".venv" }, -- lastly check for known project root files
+        { ".git", "_darcs", ".hg", ".bzr", ".svn"}, -- next check for a version controlled parent directory
+        { "lua", "MakeFile", "Makefile", "package.json",
+          ".venv", ".sln", ".slnx", "lazyvim.json", "lazy-lock.json" }, -- lastly check for known project root files
       },
       -- ignore things from root detection
       ignore = {
@@ -20,7 +22,7 @@ return {
         dirs = {}, -- list of directory patterns (Ex. { "~/.cargo/*" })
       },
       -- automatically update working directory (update manually with `:AstroRoot`)
-      autochdir = false,
+      autochdir = true,
       -- scope of working directory to change ("global"|"tab"|"win")
       scope = "global",
       -- show notification on every working directory change
