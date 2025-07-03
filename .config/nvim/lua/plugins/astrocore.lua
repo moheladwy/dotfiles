@@ -10,7 +10,7 @@ return {
   opts = {
     -- Configure core features of AstroNvim
     features = {
-      large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
+      large_buf = { size = 1024 * 256, lines = 20000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
       diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
@@ -63,26 +63,20 @@ return {
         ["<S-TAB>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         -- go to declaration/definition of symbol under cursor
         ["<F12>"] = {
-          function()
-            vim.lsp.buf.declaration()
-          end,
+          function() vim.lsp.buf.declaration() end,
           desc = "Go to declaration/definition of the symbol under cursor",
           -- cond = "textDocument/declaration"
         },
         -- Go to type definition of symbol under cursor.
         ["<C-F12>"] = {
-          function()
-            vim.lsp.buf.implementation()
-          end,
+          function() vim.lsp.buf.implementation() end,
           desc = "Go to implementation of the symbol under cursor",
         },
         -- Show all references of the symbol under cursor.
         ["<C-S-F12>"] = {
-          function()
-            vim.lsp.buf.references()
-          end,
+          function() vim.lsp.buf.references() end,
           desc = "Show all references of the symbol under cursor",
-        }
+        },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },

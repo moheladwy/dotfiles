@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- Customize Mason
 
@@ -14,12 +14,16 @@ return {
         -- install language servers
         "lua-language-server",
         "csharp-language-server",
+        "typescript-language-server",
+        "html-lsp",
+        "css-lsp",
+        "eslint-lsp",
 
         -- install formatters
         "stylua",
 
         -- install debuggers
-        "debugpy",
+        "netcoredbg",
 
         -- install any other package
         "tree-sitter-cli",
