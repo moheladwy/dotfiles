@@ -13,9 +13,11 @@ require("lazy").setup({
   },
   { import = "community" },
   { import = "plugins" },
+  -- { import = "neo-tree" },
+  -- { import = "configs" },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
-  install = { colorscheme = { "astrotheme", "habamax" } },
+  install = { colorscheme = { "astrotheme", "habamax", "vscode" } },
   ui = { backdrop = 100 },
   performance = {
     rtp = {

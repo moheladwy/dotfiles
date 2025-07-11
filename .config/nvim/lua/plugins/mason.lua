@@ -21,6 +21,8 @@ return {
 
         -- install formatters
         "stylua",
+        "prettier",
+        "csharpier",
 
         -- install debuggers
         "netcoredbg",
