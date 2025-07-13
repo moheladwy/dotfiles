@@ -22,7 +22,7 @@ return {
   get_dotnet_9_sdk_path = function()
     local sdk_path = ""
       if require("easy-dotnet.extensions").isWindows() then
-        sdk_path = "C:/Program Files/dotnet/sdk/8.0.100"
+        sdk_path = "C:/Program Files/dotnet/sdk/9.0.106/dotnet.dll"
       else
         sdk_path = "/usr/share/dotnet/sdk/9.0.106/dotnet.dll"
       end

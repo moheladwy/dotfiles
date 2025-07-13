@@ -77,6 +77,12 @@ return {
           function() vim.lsp.buf.references() end,
           desc = "Show all references of the symbol under cursor",
         },
+
+        -- Show Dotnet Commands from easy-dtonet
+        ["<leader>D"] = {
+          function() vim.cmd "Dotnet" end,
+          desc = "Show Dotnet Commands",
+        },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
