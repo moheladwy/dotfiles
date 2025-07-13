@@ -1,16 +1,17 @@
 #!/bin/bash
-#  _   _           _       _                 _     _            
-# | | | |_ __   __| | __ _| |_ ___   ___  __| | __| |_ __ ___   
-# | | | | '_ \ / _` |/ _` | __/ _ \ / __|/ _` |/ _` | '_ ` _ \  
-# | |_| | |_) | (_| | (_| | ||  __/ \__ \ (_| | (_| | | | | | | 
-#  \___/| .__/ \__,_|\__,_|\__\___| |___/\__,_|\__,_|_| |_| |_| 
-#       |_|                                                     
-#  
-# by Stephan Raabe (2024) 
-# ----------------------------------------------------- 
+#  _   _           _       _                 _     _
+# | | | |_ __   __| | __ _| |_ ___   ___  __| | __| |_ __ ___
+# | | | | '_ \ / _` |/ _` | __/ _ \ / __|/ _` |/ _` | '_ ` _ \
+# | |_| | |_) | (_| | (_| | ||  __/ \__ \ (_| | (_| | | | | | |
+#  \___/| .__/ \__,_|\__,_|\__\___| |___/\__,_|\__,_|_| |_| |_|
+#       |_|
+#
+# by Stephan Raabe (2024)
+# -----------------------------------------------------
 sleep 1
 clear
-cache_file="$HOME/.config/ml4w/cache/current_wallpaper"
+ml4w_cache_folder="$HOME/.cache/ml4w/hyprland-dotfiles"
+cache_file="$ml4w_cache_folder/current_wallpaper"
 current_wallpaper=$(cat "$cache_file")
 extension="${current_wallpaper##*.}"
 
@@ -26,7 +27,6 @@ if [ -f $HOME/.config/ml4w/settings/sddm/theme.conf ]; then
     sddm_theme_tpl="$HOME/.config/ml4w/settings/sddm/theme.conf"
     echo ":: Using custum theme.conf"
 fi
-
 
 if [ ! -f $current_wallpaper ]; then
     gum spin --spinner dot --title "File $current_wallpaper does not exist" -- sleep 3
