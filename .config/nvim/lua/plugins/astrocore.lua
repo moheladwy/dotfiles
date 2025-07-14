@@ -84,6 +84,19 @@ return {
           function() vim.cmd "Dotnet" end,
           desc = "Show Dotnet Commands",
         },
+
+        -- Toggle folding for the current line
+        ["<C-f>"] = {
+          function()
+            if vim.wo.foldenable then
+              vim.cmd "normal! za"
+            else
+              vim.wo.foldenable = true
+              vim.cmd "normal! zR"
+            end
+          end,
+          desc = "Toggle folding for the current line",
+        },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
