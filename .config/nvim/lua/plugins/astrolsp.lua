@@ -19,6 +19,7 @@ return {
     },
     -- customize lsp formatting options
     formatting = {
+      async = true, -- run format on save asynchronously
       -- control auto formatting on save
       format_on_save = {
         enabled = true, -- enable or disable format on save globally

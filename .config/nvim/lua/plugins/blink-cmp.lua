@@ -1,11 +1,12 @@
 return {
   "saghen/blink.cmp",
   version = "*",
-  config = function()
-    require("blink.cmp").setup {
+  optional = true,
+  opts = {
+    setup = {
       fuzzy = { implementation = "prefer_rust_with_warning" },
       sources = {
-        default = { "lsp", "easy-dotnet", "path" },
+        default = { "lsp", "easy-dotnet", "path", "snippets" },
         providers = {
           ["easy-dotnet"] = {
             name = "easy-dotnet",
@@ -16,16 +17,16 @@ return {
           },
         },
       },
-    }
-  end,
+    },
+    keymap = {
+      ["<Tab>"] = {
+        "snippet_forward",
+        function()
+          if vim.g.ai_accept then return vim.g.ai_accept() end
+        end,
+        "fallback",
+      },
+      ["<S-Tab>"] = { "snippet_backward", "fallback" },
+    },
+  },
 }
-
--- Failed to load `neo-tree`
---
--- /home/eladwy/.config/nvim/lua/neo-tree.lua:1: loop or previous error loading module 'neo-tree'
---
--- # stacktrace:
---   - ~/.config/nvim/lua/neo-tree.lua:1
---   - ~/.config/nvim/lua/neo-tree.lua:1 _in_ **load**
---   - ~/.config/nvim/lua/lazy_setup.lua:1
---   - ~/.config/nvim/init.lua:18
