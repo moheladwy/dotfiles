@@ -1,4 +1,4 @@
-local function rebuild_project(co, path)
+local function rebuild_project_async(co, path)
   local spinner = require("easy-dotnet.ui-modules.spinner").new()
   spinner:start_spinner "Building"
   vim.fn.jobstart(string.format("dotnet build %s", path), {
@@ -74,7 +74,7 @@ return {
           program = function()
             local dll = ensure_dll()
             local co = coroutine.running()
-            rebuild_project(co, dll.project_path)
+            rebuild_project_async(co, dll.project_path)
             if not file_exists(dll.target_path) then error("Project has not been built, path: " .. dll.target_path) end
             return dll.target_path
           end,

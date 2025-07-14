@@ -61,7 +61,7 @@ return {
         -- navigate buffer tabs
         -- Go to next buffer with <A-TAB> and previous buffer with <S-TAB>
         ["<A-TAB>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["<S-TAB>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["<CAPS-TAB>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         -- go to declaration/definition of symbol under cursor
         ["<F12>"] = {
           function() vim.lsp.buf.declaration() end,
@@ -86,7 +86,7 @@ return {
         },
 
         -- Toggle folding for the current line
-        ["<C-f>"] = {
+        ["<S-f>"] = {
           function()
             if vim.wo.foldenable then
               vim.cmd "normal! za"
