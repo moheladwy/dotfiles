@@ -2,7 +2,7 @@
 # This script updates dotfiles repository from .config directory.
 
 # Define the source and destination directories
-SOURCE_DIR="$HOME/.config"
+SOURCE_DIR="$HOME/.mydotfiles/com.ml4w.dotfiles.stable/.config"
 DEST_DIR="$HOME/dotfiles/.config"
 COMMIT_MESSAGE="updated the last config files on $(date '+%Y-%m-%d %h-%m')"
 
