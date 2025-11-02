@@ -17,6 +17,7 @@ alias du='du -h --max-depth=1'
 alias brave='brave --enable-chrome-browser-cloud-management'
 alias vim='nvim'
 alias ports='sudo lsof -i -P -n'
+alias dotnet='~/.dotnet/dotnet'
 
 # flatpak aliases
 alias fl='flatpak list'

@@ -87,10 +87,11 @@ else
 fi
 
 # Source Aliases
-if [ -f ~/.zsh_aliases ]; then
-   source ~/.zsh_aliases      # general aliases.
-   source ~/.zsh_aliases_private # private aliases that won't be shared to git repo.
-   source ~/.zsh_arch_aliases # package manager aliases.
+if [ -f "$HOME"/.zsh_aliases ]; then
+   source "$HOME"/.zsh_aliases      # general aliases.
+   source "$HOME"/.zsh_aliases_private # private aliases that won't be shared to git repo.
+   source "$HOME"/.zsh_arch_aliases # package manager aliases.
 fi
 
-export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$HOME/.dotnet/tools:$HOME/.spicetify:/home/eladwy/.lmstudio/bin
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$DOTNET_ROOT:$DOTNET_ROOT/tools:$HOME/.spicetify
