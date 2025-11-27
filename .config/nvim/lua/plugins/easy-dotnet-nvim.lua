@@ -26,12 +26,12 @@ return {
       return path
     end
 
-    local function get_dotnet_9_sdk_path()
+    local function get_dotnet_10_sdk_path()
       local sdk_path = ""
       if require("easy-dotnet.extensions").isWindows() then
-        sdk_path = "C:/Program Files/dotnet/sdk/9.0.106/dotnet.dll"
+        sdk_path = "C:/Program Files/dotnet/sdk/10.0.100/dotnet.dll"
       else
-        sdk_path = "/usr/share/dotnet/sdk/9.0.106/dotnet.dll"
+        sdk_path = "/home/eladwy/.dotnet/sdk/10.0.100/dotnet.dll"
       end
       return sdk_path
     end
@@ -42,7 +42,7 @@ return {
       --Optional function to return the path for the dotnet sdk (e.g C:/ProgramFiles/dotnet/sdk/8.0.0)
       -- easy-dotnet will resolve the path automatically if this argument is omitted, for a performance improvement you can add a function that returns a hardcoded string
       -- You should define this function to return a hardcoded path for a performance improvement 🚀
-      get_sdk_path = get_dotnet_9_sdk_path,
+      get_sdk_path = get_dotnet_10_sdk_path,
       ---@type TestRunnerOptions
       test_runner = {
         ---@type "split" | "vsplit" | "float" | "buf"
