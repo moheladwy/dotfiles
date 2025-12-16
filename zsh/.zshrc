@@ -41,6 +41,7 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::zoxide
 zinit snippet OMZP::fzf
+zinit snippet OMZP::nvm
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -95,3 +96,5 @@ fi
 
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$DOTNET_ROOT:$DOTNET_ROOT/tools:$HOME/.spicetify
+
+
