@@ -60,6 +60,10 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;6C' forward-word
 bindkey '^[[1;6D' backward-word
 
+# Home and End Key Bindings
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history

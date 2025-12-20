@@ -42,6 +42,22 @@ return {
       --Optional function to return the path for the dotnet sdk (e.g C:/ProgramFiles/dotnet/sdk/8.0.0)
       -- easy-dotnet will resolve the path automatically if this argument is omitted, for a performance improvement you can add a function that returns a hardcoded string
       -- You should define this function to return a hardcoded path for a performance improvement 🚀
+      lsp = {
+        enabled = true, -- Enable builtin roslyn lsp
+        roslynator_enabled = true, -- Automatically enable roslynator analyzer
+        analyzer_assemblies = {}, -- Any additional roslyn analyzers you might use like SonarAnalyzer.CSharp
+        config = {},
+      },
+      debugger = {
+        -- Path to custom coreclr DAP adapter
+        -- easy-dotnet-server falls back to its own netcoredbg binary if bin_path is nil
+        bin_path = nil,
+        apply_value_converters = true,
+        auto_register_dap = true,
+        mappings = {
+          open_variable_viewer = { lhs = "T", desc = "open variable viewer" },
+        },
+      },
       get_sdk_path = get_dotnet_10_sdk_path,
       ---@type TestRunnerOptions
       test_runner = {
@@ -49,6 +65,8 @@ return {
         viewmode = "float",
         ---@type number|nil
         vsplit_width = nil,
+        ---@type string|nil "topleft" | "topright"
+        vsplit_pos = nil,
         enable_buffer_test_execution = true, --Experimental, run tests directly from buffer
         noBuild = true,
         icons = {
@@ -65,7 +83,7 @@ return {
         },
         mappings = {
           run_test_from_buffer = { lhs = "<leader>r", desc = "run test from buffer" },
-          debug_test_from_buffer = { lhs = "<leader>dtfb", desc = "debug test from buffer" },
+          peek_stack_trace_from_buffer = { lhs = "<leader>p", desc = "peek stack trace from buffer" },
           filter_failed_tests = { lhs = "<leader>fe", desc = "filter failed tests" },
           debug_test = { lhs = "<leader>d", desc = "debug test" },
           go_to_file = { lhs = "g", desc = "go to file" },
@@ -89,6 +107,7 @@ return {
       },
       ---@param action "test" | "restore" | "build" | "run"
       terminal = function(path, action, args)
+        args = args or ""
         local commands = {
           run = function() return string.format("dotnet run --project %s %s", path, args) end,
           test = function() return string.format("dotnet test %s %s", path, args) end,
@@ -96,20 +115,25 @@ return {
           build = function() return string.format("dotnet build %s %s", path, args) end,
           watch = function() return string.format("dotnet watch --project %s %s", path, args) end,
         }
-
-        local command = commands[action]() .. "\r"
+        local command = commands[action]()
+        if require("easy-dotnet.extensions").isWindows() == true then command = command .. "\r" end
         vim.cmd "vsplit"
         vim.cmd("term " .. command)
       end,
-      secrets = {
-        path = get_secret_path,
-      },
       csproj_mappings = true,
       fsproj_mappings = true,
       auto_bootstrap_namespace = {
         --block_scoped, file_scoped
-        type = "file_scoped", -- default is "block_scoped",
+        type = "block_scoped",
         enabled = true,
+        use_clipboard_json = {
+          behavior = "prompt", --'auto' | 'prompt' | 'never',
+          register = "+", -- which register to check
+        },
+      },
+      server = {
+        ---@type nil | "Off" | "Critical" | "Error" | "Warning" | "Information" | "Verbose" | "All"
+        log_level = nil,
       },
       -- choose which picker to use with the plugin
       -- possible values are "telescope" | "fzf" | "snacks" | "basic"
@@ -124,8 +148,12 @@ return {
           local spinner = require("easy-dotnet.ui-modules.spinner").new()
           spinner:start_spinner(start_event.job.name)
           ---@param finished_event JobEvent
-          return function(finished_event) spinner:stop_spinner(finished_event.result.text, finished_event.result.level) end
+          return function(finished_event) spinner:stop_spinner(finished_event.result.msg, finished_event.result.level) end
         end,
+      },
+      diagnostics = {
+        default_severity = "error",
+        setqflist = false,
       },
     }
 
