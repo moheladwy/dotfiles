@@ -1,9 +1,9 @@
 # package manager aliases
-alias r='yay -R'                                             # uninstall package
-alias u='yay -Syu --noconfirm --needed && flatpak update -y' # update system/package/aur and flatpak apps
-alias i='yay -S --noconfirm --needed'                        # install new package
-alias s='yay -Ss'                                            # list available package
-alias list='yay -Qe'                                         # list installed packages
-alias info='yay -Qi'                                         # show package info
-alias clean='yay -Sc'                                        # clean cache
-alias cleanall='yay -Scc'                                    # clean all cache
+alias r='yay -R'                                                                                               # uninstall package
+alias u='yay -Syu --noconfirm --needed && flatpak update -y'                                                   # update system/package/aur and flatpak apps
+alias i='yay -S --noconfirm --needed'                                                                          # install new package
+alias s='yay -Ss'                                                                                              # list available package
+alias list="yay -Qe | fzf --preview 'yay -Qil {}' --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'" # list installed packages
+alias info='yay -Qi'                                                                                           # show package info
+alias clean='yay -Sc'                                                                                          # clean cache
+alias cleanall='yay -Scc'                                                                                      # clean all cache
