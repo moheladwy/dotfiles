@@ -19,6 +19,7 @@ return {
       "cpp",
       "java",
       "c",
+      "c_sharp",
     },
   },
 }

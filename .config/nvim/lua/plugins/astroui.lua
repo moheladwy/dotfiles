@@ -11,7 +11,7 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "vscode",
+    colorscheme = "astrotheme",
     folding = {
       enabled = function(bufnr) return require("astrocore.buffer").is_valid(bufnr) end,
       methods = { "lsp", "treesitter", "indent" },

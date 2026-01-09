@@ -61,7 +61,7 @@ return {
         -- navigate buffer tabs
         -- Go to next buffer with <A-TAB> and previous buffer with <S-TAB>
         ["<A-TAB>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["<CAPS-TAB>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["<A-S-TAB>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         -- go to declaration/definition of symbol under cursor
         ["<F12>"] = {
           function() vim.lsp.buf.declaration() end,
