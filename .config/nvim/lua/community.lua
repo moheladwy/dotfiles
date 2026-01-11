@@ -31,6 +31,7 @@ return {
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.indent.indent-rainbowline" },
   { import = "astrocommunity.recipes.ai" },
+  { import = "astrocommunity.ai.opencode-nvim" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.vscode" },

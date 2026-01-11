@@ -99,6 +99,7 @@ if [ -f "$HOME"/.zsh_aliases ]; then
 fi
 
 export DOTNET_ROOT="$HOME/.dotnet"
-export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$DOTNET_ROOT:$DOTNET_ROOT/tools:$HOME/.spicetify
+export ASPIRE_PATH="$HOME/.aspire/bin"
+export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$DOTNET_ROOT:$DOTNET_ROOT/tools:$HOME/.spicetify:$ASPIRE_PATH
 
 
