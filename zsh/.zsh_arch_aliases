@@ -5,5 +5,6 @@ alias i='yay -S --noconfirm --needed'                                           
 alias s='yay -Ss'                                                                                              # list available package
 alias list="yay -Qe | fzf --preview 'yay -Qil {}' --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'" # list installed packages
 alias info='yay -Qi'                                                                                           # show package info
-alias clean='yay -Sc'                                                                                          # clean cache
+alias clean='yay -Sc --noconfirm'                                                                                          # clean cache
 alias cleanall='yay -Scc'                                                                                      # clean all cache
+alias rm-debug='yay -Rns --noconfirm $(pacman -Qq | grep -- -debug)'
