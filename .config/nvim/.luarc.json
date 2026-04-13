@@ -1,5 +1,3 @@
 {
-    "diagnostics.globals": [
-        "require"
-    ]
+  "format.enable": false
 }

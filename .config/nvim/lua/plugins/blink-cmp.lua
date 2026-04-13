@@ -2,12 +2,16 @@
 return {
   "saghen/blink.cmp", -- Repository for the Blink.cmp plugin
   version = "*", -- Use the latest version of the plugin
+  -- optional: provides snippets for the snippet source
+  dependencies = { 'rafamadriz/friendly-snippets' },  
   optional = true, -- Specifies that this plugin is optional
   opts = {
     setup = { -- Setup options for the plugin
       fuzzy = { implementation = "prefer_rust_with_warning" }, -- Fuzzy matching with a preference for Rust
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = false } },
       sources = { -- Configuration for completion sources
-        default = { "lsp", "easy-dotnet", "path", "snippets" }, -- Default completion sources
+        default = { "lsp", "path", "snippets" , "easy-dotnet" }, -- Default completion sources
         providers = { -- Additional provider configurations
           ["easy-dotnet"] = {
             name = "easy-dotnet", -- Provider name
