@@ -3,7 +3,7 @@ return {
   "saghen/blink.cmp", -- Repository for the Blink.cmp plugin
   version = "*", -- Use the latest version of the plugin
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },  
+  dependencies = { "rafamadriz/friendly-snippets" },
   optional = true, -- Specifies that this plugin is optional
   opts = {
     setup = { -- Setup options for the plugin
@@ -11,7 +11,7 @@ return {
       -- (Default) Only show the documentation popup when manually triggered
       completion = { documentation = { auto_show = false } },
       sources = { -- Configuration for completion sources
-        default = { "lsp", "path", "snippets" , "easy-dotnet" }, -- Default completion sources
+        default = { "lsp", "path", "snippets", "easy-dotnet" }, -- Default completion sources
         providers = { -- Additional provider configurations
           ["easy-dotnet"] = {
             name = "easy-dotnet", -- Provider name

@@ -4,6 +4,8 @@
 # Author: Mohamed Hussein Al-Adawy.
 # Last Modified: 2024-07-20
 # ==============================================================================================================
+#!/bin/bash
+
 Red='\e[0;31m'
 Gre='\e[0;32m'
 Whi='\e[0;37m'
@@ -32,7 +34,7 @@ sudo make reloadmodule
 make
 sudo make dkms
 
-sudo dmesg >> ~/dmesg-file
+sudo dmesg >>~/dmesg-file
 echo -e "➞ [${Gre}*${Whi}] Checking the kernel module in the ~/dmesg-file to see if it loaded correctly..."
 
 echo -e "➞ [${Gre}*${Whi}] Adding Desktop Entry for the GUI Application..."
