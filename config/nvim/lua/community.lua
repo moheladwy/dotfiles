@@ -1,0 +1,45 @@
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
+-- AstroCommunity: import any community modules here
+-- We import this file in `lazy_setup.lua` before the `plugins/` folder.
+-- This guarantees that the specs are processed before any user plugins.
+
+---@type LazySpec
+return {
+  "AstroNvim/astrocommunity",
+  { import = "astrocommunity.pack.lua" },
+  -- import/override with your plugins folder
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.sql" },
+  { import = "astrocommunity.pack.tailwindcss" },
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.completion.copilot-lua" },
+  { import = "astrocommunity.colorscheme.vscode-nvim" },
+  { import = "astrocommunity.docker.lazydocker" },
+  { import = "astrocommunity.editing-support.auto-save-nvim" },
+  { import = "astrocommunity.editing-support.comment-box-nvim" },
+  { import = "astrocommunity.editing-support.multiple-cursors-nvim" },
+  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+  { import = "astrocommunity.scrolling.mini-animate" },
+  { import = "astrocommunity.utility.hover-nvim" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
+  { import = "astrocommunity.indent.indent-rainbowline" },
+  { import = "astrocommunity.recipes.ai" },
+  { import = "astrocommunity.ai.opencode-nvim" },
+  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
+  { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
+  { import = "astrocommunity.recipes.vscode" },
+  { import = "astrocommunity.recipes.vscode-icons" },
+  { import = "astrocommunity.recipes.picker-lsp-mappings" },
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.diagnostics.error-lens-nvim" },
+}

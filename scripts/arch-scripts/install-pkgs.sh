@@ -1,10 +1,10 @@
-#! /bin/bash
 # ===============================================================================================
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
-# Last Modified: 2024-11-06
+# Last Modified: 2026-4-14
 # ===============================================================================================
+#!/bin/bash
 
 source "$HOME/dotfiles/scripts/env_variables.sh"
 
@@ -70,8 +70,8 @@ install_yay() {
 
 # --------
 install_main_pkgs() {
-	echo -e "${Gre}➞ [+] The main packages will be installed now..${Whi}"
-	yay -S --needed --noconfirm $(cat $all_pkgs)
+	echo -e "${Gre}➞ [+] The utility packages will be installed now..${Whi}"
+	yay -S --needed --noconfirm $(cat $utility_pkgs)
 	echo "$Sperator"
 	sleep $sleep_time
 }

@@ -9,7 +9,7 @@ waybar
 waypaper
 wlogout
 wofi
-rofi-wayland
+rofi
 dunst
 wal
 gum
@@ -17,7 +17,6 @@ ags
 magick
 figlet
 grimblast-git
-ml4w-hyprland
 nwg-dock-hyprland
 pinta
 smile
