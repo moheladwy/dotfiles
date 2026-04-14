@@ -8,7 +8,6 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  -- import/override with your plugins folder
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.cpp" },
@@ -35,6 +34,8 @@ return {
   { import = "astrocommunity.indent.indent-rainbowline" },
   { import = "astrocommunity.recipes.ai" },
   { import = "astrocommunity.ai.opencode-nvim" },
+  { import = "astrocommunity.ai.avante-nvim" },
+  { import = "astrocommunity.ai.codex-nvim" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.vscode" },
