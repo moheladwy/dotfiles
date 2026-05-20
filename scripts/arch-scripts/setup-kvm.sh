@@ -1,12 +1,18 @@
+#!/bin/bash
 # ===============================================================================================
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
 # Last Modified: 2024-11-06
 # ===============================================================================================
-#! /bin/bash
+set -euo pipefail
 
 source "$HOME/dotfiles/scripts/env_variables.sh"
+
+if ! command -v pacman &>/dev/null; then
+	echo "Error: This script is for Arch Linux only." >&2
+	exit 1
+fi
 
 # --------
 kvm_packages=(qemu-full qemu-img swtpm tuned guestfs-tools virt-install virt-manager
@@ -17,9 +23,9 @@ kvm_packages=(qemu-full qemu-img swtpm tuned guestfs-tools virt-install virt-man
 # --------
 check_hardware_support() {
 	echo -e "${Cya}➞ [+] Checking hardware support for KVM on AMD CPUs...${Whi}"
-	is_kvm_supported=$(LC_ALL=C.UTF-8 lscpu | grep Virtualization)
+	is_kvm_supported=$(LC_ALL=C.UTF-8 lscpu | grep Virtualization || true)
 
-	if [[ "$is_kvm_supported" != *"AMD-V"* ]]; then
+	if [[ "$is_kvm_supported" != *"AMD-V"* ]] && [[ "$is_kvm_supported" != *"VT-x"* ]]; then
 		echo -e "${Red}➞ [!] KVM is not supported on this system.${Whi}"
 		echo -e "${Red}➞ [!] Please enable virtualization in your BIOS/UEFI settings.${Whi}"
 		echo -e "${Red}➞ [!] Exiting...${Whi}"
@@ -33,7 +39,7 @@ check_hardware_support() {
 # --------
 check_if_kernel_has_kvm_module() {
 	echo -e "${Cya}➞ [+] Checking if the kernel has the KVM module...${Whi}"
-	is_kvm_module_present=$(zgrep CONFIG_KVM /proc/config.gz)
+	is_kvm_module_present=$(zgrep CONFIG_KVM /proc/config.gz || true)
 
 	if [ -z "$is_kvm_module_present" ]; then
 		echo -e "${Red}➞ [!] The kernel does not have the KVM module.${Whi}"
@@ -135,8 +141,12 @@ verify_host_virtualization() {
 
 # --------
 enable_amd_sev() {
+	if ! grep -q "AMD" /proc/cpuinfo; then
+		echo -e "${Whi}➞ [*] Skipping AMD SEV (not an AMD system).${Whi}"
+		return 0
+	fi
 	echo -e "${Cya}➞ [+] Enabling AMD SEV...${Whi}"
-	echo "options kvm_amd sev=1" >>/etc/modprobe.d/amd-sev.conf
+	echo "options kvm_amd sev=1" | sudo tee -a /etc/modprobe.d/amd-sev.conf >/dev/null
 	echo -e "${Gre}➞ [+] AMD SEV enabled, please reboot the system after the script finishes.${Whi}"
 	echo -e "$Separator"
 	sleep "$sleep_time"

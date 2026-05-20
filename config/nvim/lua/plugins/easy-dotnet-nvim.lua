@@ -13,18 +13,16 @@ return {
     local function get_dotnet_10_sdk_path()
       local sdk_path = ""
       if require("easy-dotnet.extensions").isWindows() then
-        sdk_path = "C:/Program Files/dotnet/sdk/10.0.100/dotnet.dll"
+        sdk_path = "C:/Program Files/dotnet/sdk/10.0.202/dotnet.dll"
       else
         local home_dir = vim.fn.expand "~"
-        sdk_path = home_dir .. "/.dotnet/sdk/10.0.100/dotnet.dll"
+        sdk_path = home_dir .. "/.dotnet/sdk/10.0.202/dotnet.dll"
       end
       return sdk_path
     end
 
     local function get_dotnet_sdk_path_by_version(dotnet_version)
-      if dotnet_version == nil then
-        return get_dotnet_10_sdk_path()
-      end
+      if dotnet_version == nil then return get_dotnet_10_sdk_path() end
       local sdk_path = ""
       if require("easy-dotnet.extensions").isWindows() then
         sdk_path = "C:/Program Files/dotnet/sdk/" .. dotnet_version .. "/dotnet.dll"
@@ -57,7 +55,7 @@ return {
           open_variable_viewer = { lhs = "T", desc = "open variable viewer" },
         },
       },
-      get_sdk_path = get_dotnet_sdk_path_by_version "10.0.100",
+      get_sdk_path = get_dotnet_sdk_path_by_version "10.0.202",
       ---@type TestRunnerOptions
       test_runner = {
         ---@type "split" | "vsplit" | "float" | "buf"

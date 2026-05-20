@@ -1,15 +1,15 @@
-# /           _              
-#    _______| |__  _ __ ___ 
+# /           _
+#    _______| |__  _ __ ___
 #   |_  / __| '_ \| '__/ __|
-#  _ / /\__ \ | | | | | (__ 
+#  _ / /\__ \ | | | | | (__
 # (_)___|___/_| |_|_|  \___|
-#                           
+#
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Set the directory we want to store zinit and plugins
@@ -27,7 +27,8 @@ if [ -f "${ZINIT_HOME}/zinit.zsh" ]; then
 fi
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -93,13 +94,12 @@ fi
 
 # Source Aliases
 if [ -f "$HOME"/.zsh_aliases ]; then
-   source "$HOME"/.zsh_aliases      # general aliases.
+   source "$HOME"/.zsh_aliases         # general aliases.
    source "$HOME"/.zsh_aliases_private # private aliases that won't be shared to git repo.
-   source "$HOME"/.zsh_arch_aliases # package manager aliases.
+   source "$HOME"/.zsh_arch_aliases    # package manager aliases.
 fi
 
 export DOTNET_ROOT="$HOME/.dotnet"
 export ASPIRE_PATH="$HOME/.aspire/bin"
-export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$DOTNET_ROOT:$DOTNET_ROOT/tools:$HOME/.spicetify:$ASPIRE_PATH
-
-
+export BUN_PATH="/home/eladwy/.bun/bin"
+export PATH=$PATH:$HOME/.local/bin:/opt/Jetbrains/scripts:$DOTNET_ROOT:$DOTNET_ROOT/tools:$HOME/.spicetify:$ASPIRE_PATH:$BUN_PATH

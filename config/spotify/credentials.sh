@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export SPOTIPY_CLIENT_ID='13f646c1aec149dd818b5c4c590746e1'
+export SPOTIPY_CLIENT_SECRET='a86bea90fb4a458bacad85407510fee6'

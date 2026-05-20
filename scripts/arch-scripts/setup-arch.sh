@@ -1,14 +1,22 @@
+#!/bin/bash
 # ===============================================================================================
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
 # Last Modified: 2024-11-06
 # ===============================================================================================
-#! /bin/bash
+set -euo pipefail
 
 # --------
 source "$HOME/dotfiles/scripts/env_variables.sh"
 # --------
+
+if ! command -v pacman &>/dev/null; then
+	echo "Error: This script is for Arch Linux only." >&2
+	exit 1
+fi
+
+exec > >(tee -a "$HOME/dotfiles-setup.log") 2>&1
 
 # --------
 welcome_message() {
@@ -29,6 +37,8 @@ claim_sudo() {
 		sleep 60
 		kill -0 "$$" || exit
 	done 2>/dev/null &
+	SUDO_REFRESH_PID=$!
+	trap 'kill "$SUDO_REFRESH_PID" 2>/dev/null' EXIT
 }
 
 # --------
@@ -63,7 +73,7 @@ install_pkgs() {
 	"$dotfiles_dir/$arch_scripts_dir/install-pkgs.sh"
 
 	echo "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
 # --------
@@ -72,27 +82,46 @@ change_shell() {
 	read -r REPLY
 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		sudo chsh -s $(which zsh) $(whoami)
+		zsh_path=$(which zsh 2>/dev/null)
+		if [[ -z "$zsh_path" ]]; then
+			echo -e "${Red}➞ [!] zsh is not installed. Install it first.${Whi}"
+			return 1
+		fi
+		sudo chsh -s "$zsh_path" "$(whoami)"
 		echo -e "${Gre}➞ [+] Shell changed to zsh successfully (you need to logout and login again to see the changes).${Whi}"
-		sleep $sleep_time
+		sleep "$sleep_time"
 	else
 		echo -e "${Red}➞ [+] Shell not changed.${Whi}"
-		sleep $sleep_time
+		sleep "$sleep_time"
 	fi
 }
 
 # --------
 install_zsh_plugins() {
-	# Clone zsh-autosuggestions and zsh-syntax-highlighting plugins
-	echo -e "${Gre}➞ [+] Cloning zsh-autosuggestions plugin..${Whi}"
-	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+		echo -e "${Red}➞ [!] oh-my-zsh is not installed. Install it before running this.${Whi}"
+		return 1
+	fi
 
-	echo -e "${Gre}➞ [+] Cloning zsh-syntax-highlighting plugin..${Whi}"
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	# Clone zsh-autosuggestions plugin
+	if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
+		echo -e "${Gre}➞ [+] Cloning zsh-autosuggestions plugin..${Whi}"
+		git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	else
+		echo -e "${Gre}➞ [+] zsh-autosuggestions already installed, skipping.${Whi}"
+	fi
+
+	# Clone zsh-syntax-highlighting plugin
+	if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
+		echo -e "${Gre}➞ [+] Cloning zsh-syntax-highlighting plugin..${Whi}"
+		git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	else
+		echo -e "${Gre}➞ [+] zsh-syntax-highlighting already installed, skipping.${Whi}"
+	fi
 
 	echo -e "${Gre}➞ [+] zsh-autosuggestions and zsh-syntax-highlighting plugins cloned successfully.${Whi}"
 	echo "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
 # --------
@@ -109,7 +138,7 @@ setup_lenovo_legion5_modules() {
 	fi
 
 	echo "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
 # --------
@@ -136,7 +165,7 @@ setup_configuration_files() {
 	"$dotfiles_dir/$arch_scripts_dir/setup-configs.sh"
 
 	echo "$Sperator"
-	sleep $sleep_time
+	sleep "$sleep_time"
 }
 
 # --------

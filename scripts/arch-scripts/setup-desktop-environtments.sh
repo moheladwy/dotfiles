@@ -1,63 +1,65 @@
+#!/bin/bash
 # ===============================================================================================
 # Title: Arch Linux Setup Script
 # Description: This script is part of the dotfiles and is used to install packages on Arch Linux.
 # Author: Mohamed Hussein Al-Adawy.
 # Last Modified: 2024-11-06
 # ===============================================================================================
-#! /bin/bash
+set -euo pipefail
 
 # --------
 source "$HOME/dotfiles/scripts/env_variables.sh"
 # --------
 
-gnome_pkgs=(xorg gdm gnome gnome-extra networkmanager)
-xfce_pkgs=(xorg lightdm lightdm-gtk-greeter xfce4 xfce4-goodies networkmanager)
-cinnamon_pkgs=(xorg sddm cinnamon nemo-fileroller networkmanager)
+if ! command -v pacman &>/dev/null; then
+	echo "Error: This script is for Arch Linux only." >&2
+	exit 1
+fi
 
 # --------
 install_kde() {
 	echo -e "${Gre}➞ [+] Installing KDE Plasma..${Whi}"
-	yay -S --needed --noconfirm $(cat "$kde_pkgs")
+	mapfile -t _pkgs < "$kde_pkgs"
+	yay -S --needed --noconfirm "${_pkgs[@]}"
 	sudo systemctl enable sddm
 }
 
 # --------
 install_gnome() {
 	echo "Installing GNOME and applications..."
-	yay -S --needed --noconfirm $(cat "$gnome_pkgs")
+	mapfile -t _pkgs < "$gnome_pkgs"
+	yay -S --needed --noconfirm "${_pkgs[@]}"
 	sudo systemctl enable gdm
 }
 
 # --------
 install_xfce() {
 	echo "Installing XFCE and applications..."
-	yay -S --needed --noconfirm $(cat "$xfce_pkgs")
+	mapfile -t _pkgs < "$xfce_pkgs"
+	yay -S --needed --noconfirm "${_pkgs[@]}"
 	sudo systemctl enable lightdm
 }
 
 # --------
 install_cinnamon() {
 	echo "Installing Cinnamon and applications..."
-	yay -S --needed --noconfirm $(cat "$cinnamon_pkgs")
+	mapfile -t _pkgs < "$cinnamon_pkgs"
+	yay -S --needed --noconfirm "${_pkgs[@]}"
 	sudo systemctl enable sddm
 }
 
 # --------
 install_hyprland() {
 	echo -e "${Gre}➞ [+] Installing Hyprland..${Whi}"
-	yay -S --needed --noconfirm $(cat "$hyprland_pkgs")
+	mapfile -t _pkgs < "$hyprland_pkgs"
+	yay -S --needed --noconfirm "${_pkgs[@]}"
 	sudo systemctl enable sddm
-}
-
-
-install_ml4w_configs() {
-	
 }
 
 # --------
 choose_desktop() {
 	while true; do
-		echo -e "${Cya}➞ [+] Available desktop enviromnets for installation:"
+		echo -e "${Cya}➞ [+] Available desktop environments for installation:${Whi}"
 		echo -e "${Cya}➞ [+] 1- kde"
 		echo -e "${Cya}➞ [+] 2- gnome"
 		echo -e "${Cya}➞ [+] 3- xfce"
@@ -100,4 +102,6 @@ choose_desktop() {
 	sleep "$sleep_time"
 }
 
-choose_desktop
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+	choose_desktop
+fi

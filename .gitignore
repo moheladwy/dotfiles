@@ -7,3 +7,5 @@ bash/.bash_history
 .config/hypr/shaders/*
 .ssh
 scripts/arch-scripts/.cache
+scripts/.codacy/
+scripts/SCRIPTS_AUDIT_REPORT.md

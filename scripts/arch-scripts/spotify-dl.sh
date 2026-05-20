@@ -1,8 +1,16 @@
 #!/bin/bash
 
-# Spotify Environment Variables
-export SPOTIPY_CLIENT_ID='13f646c1aec149dd818b5c4c590746e1'
-export SPOTIPY_CLIENT_SECRET='a86bea90fb4a458bacad85407510fee6'
+# Spotify credentials - load from external file to avoid hard-coding secrets
+SPOTIFY_CREDENTIALS_FILE="$HOME/.config/spotify/credentials.sh"
+if [[ ! -f "$SPOTIFY_CREDENTIALS_FILE" ]]; then
+    echo "Error: Spotify credentials file not found at $SPOTIFY_CREDENTIALS_FILE"
+    echo "Create it with:"
+    echo "  export SPOTIPY_CLIENT_ID='your_client_id'"
+    echo "  export SPOTIPY_CLIENT_SECRET='your_client_secret'"
+    exit 1
+fi
+# shellcheck source=/dev/null
+source "$SPOTIFY_CREDENTIALS_FILE"
 
 # Spotify Playlists
 Playlists=(
@@ -20,10 +28,14 @@ Playlists=(
 OutputDir="$HOME/Music/spotify"
 
 # Number of cores to use.
-Cores=12
+Cores=$(nproc)
 
 # Skip adblock
 SkipAdBlock=y
 
 # Download Spotify Playlists
+if ! command -v spotify_dl &>/dev/null; then
+    echo "Error: spotify_dl is not installed. Install it with: pip install spotify_dl"
+    exit 1
+fi
 spotify_dl -l "${Playlists[@]}" -o "$OutputDir" -s $SkipAdBlock -mc $Cores -w
