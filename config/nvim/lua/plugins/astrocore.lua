@@ -46,6 +46,8 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = true, -- sets vim.opt.wrap
+        encoding = "utf-8", -- sets vim.opt.encoding,
+        fileencodings = "utf-8", -- sets vim.opt.fileencodings
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
