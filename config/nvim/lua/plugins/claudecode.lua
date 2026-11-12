@@ -7,6 +7,11 @@
 return {
   "coder/claudecode.nvim",
   init = function()
+    -- Resize the Claude window by 5 columns. Works from any normal-mode window, including the Claude
+    -- window after <C-\><C-n> (terminal keys can't use <Leader> directly).
+    vim.keymap.set("n", "<Leader>A<", "5<C-w><", { desc = "Claude: narrower" })
+    vim.keymap.set("n", "<Leader>A>", "5<C-w>>", { desc = "Claude: wider" })
+
     -- Inside the Claude window (terminal mode), <C-q> leaves terminal mode and toggles the window closed.
     -- The session keeps running; reopen it with <Leader>Ac or <Leader>Af.
     vim.api.nvim_create_autocmd("FileType", {
