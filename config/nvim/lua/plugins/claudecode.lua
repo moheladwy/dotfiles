@@ -6,6 +6,19 @@
 ---@type LazySpec
 return {
   "coder/claudecode.nvim",
+  init = function()
+    -- Inside the Claude window (terminal mode), <C-q> leaves terminal mode and toggles the window closed.
+    -- The session keeps running; reopen it with <Leader>Ac or <Leader>Af.
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "claudecode",
+      callback = function(args)
+        vim.keymap.set("t", "<C-q>", "<C-\\><C-n><Cmd>ClaudeCodeFocus<CR>", {
+          buffer = args.buf,
+          desc = "Hide Claude window (keep session)",
+        })
+      end,
+    })
+  end,
   opts = {
     -- Server
     port_range = { min = 10000, max = 65535 },
